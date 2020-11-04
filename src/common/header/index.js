@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+// import * as actionCreators from './store/actionCreators';
+import {actionCreators} from './store';
 // import PropTypes from 'prop-types';
 import {
   HeaderWrapper,
@@ -13,6 +15,8 @@ import {
   Button
 } from './style';
 
+// const {} = actionCreators
+
 
 const Header = () => {
   
@@ -24,15 +28,11 @@ const Header = () => {
   const dispatch = useDispatch(); 
   const handleInputFocus = () => {
     // setFocused(true);
-    dispatch({
-      type:'searchFocus'
-    })
+    dispatch(actionCreators.searchFocus());
   }
   const handleInputBlur = () => {
     // setFocused(false);
-    dispatch({
-      type:'searchBlur'
-    })
+    dispatch(actionCreators.searchBlur());
   }
   return (
     <HeaderWrapper>
