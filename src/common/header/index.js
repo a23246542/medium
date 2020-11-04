@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import {useSelector,useDispatch} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 // import PropTypes from 'prop-types';
 import {
@@ -14,15 +15,24 @@ import {
 
 
 const Header = () => {
+  
+  // const [focused,setFocused] = useState(false);
+  const focused = useSelector((state) => state.focused);
 
-  const [focused,setFocused] = useState(false);
-
+  
+  // ==============================================
+  const dispatch = useDispatch(); 
   const handleInputFocus = () => {
-    setFocused(true);
+    // setFocused(true);
+    dispatch({
+      type:'searchFocus'
+    })
   }
-
   const handleInputBlur = () => {
-    setFocused(false);
+    // setFocused(false);
+    dispatch({
+      type:'searchBlur'
+    })
   }
   return (
     <HeaderWrapper>
