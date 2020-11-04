@@ -21,7 +21,9 @@ import {
 const Header = () => {
   
   // const [focused,setFocused] = useState(false);
-  const focused = useSelector((state) => state.header.focused);
+  // const focused = useSelector((state) => state.header.focused);
+  // const focused = useSelector((state) => state.header.get('focused'));
+  const focused = useSelector((state) => state.getIn(['header','focused']));
 
   
   // ==============================================
