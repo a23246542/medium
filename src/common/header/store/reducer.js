@@ -4,13 +4,15 @@ import { fromJS } from 'immutable';
 const defaultState = fromJS({
   focused:false,
   list: [],
+  page:1,
+  totalPages:1
 })
 //純函數
 export default (state=defaultState,action) => {
 
-  const { type , payload } = action;
+  // const { type , payload } = action;
 
-  switch (type) {
+  switch (action.type) {
     case actionTypes.SEARCH_FOCUS:
       // return {
       //   focused:true,
@@ -22,7 +24,8 @@ export default (state=defaultState,action) => {
       // }
       return state.set('focused', false);
     case actionTypes.CHANGE_LIST:
-      return state.set('list', payload)
+      return state.set('list', action.data)
+      .set('totalPages', action.totalPages);
     default:
       return state;
   }

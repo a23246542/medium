@@ -5,7 +5,8 @@ import api from '../../../api';
 
 const changeList = (data) => ({
   type: actionTypes.CHANGE_LIST,
-  payload: fromJS(data)
+  data:fromJS(data),
+  totalPages:Math.ceil(data.length / 10),
 })
 
 
