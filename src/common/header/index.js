@@ -11,11 +11,17 @@ import {
   NavItem,
   SearchWrapper,
   NavSearch,
+  SearchInfo,
+  SearchInfoTitle,
+  SearchInfoSwitch,
+  SearchInfoList,
+  SearchInfoItem,
   Addition,
   Button
 } from './style';
 
 // const {} = actionCreators
+
 
 
 const Header = () => {
@@ -36,6 +42,27 @@ const Header = () => {
     // setFocused(false);
     dispatch(actionCreators.searchBlur());
   }
+
+  const getListArea = (show) => {
+    if (show) {
+      return (
+        <SearchInfo>
+        <SearchInfoTitle>
+          熱門搜索
+          <SearchInfoSwitch>換一換</SearchInfoSwitch>
+        </SearchInfoTitle>
+        <SearchInfoList>
+          <SearchInfoItem>教育</SearchInfoItem>
+          <SearchInfoItem>簡書</SearchInfoItem>
+          <SearchInfoItem>投稿</SearchInfoItem>
+        </SearchInfoList>
+      </SearchInfo>
+      )
+    } else {
+      return null;
+    }
+  }
+  
   return (
     <HeaderWrapper>
       <Logo/>
@@ -60,14 +87,15 @@ const Header = () => {
             </CSSTransition>
               {/* <i className="iconfont"
                 className={focused ? 'focused' :''} */}
-              <i className={focused? 'focused iconfont zoom' :'iconfont zoom'}
-              >&#xe614;</i>
+            <i className={focused? 'focused iconfont zoom' :'iconfont zoom'}
+            >&#xe614;</i>
+            { getListArea(focused) }
           </SearchWrapper>
-          <Addition>
-            <Button className='writing'>写文章</Button>
-            <Button className='reg'>注册</Button>
-          </Addition>
       </Nav>
+      <Addition>
+        <Button className='writing'>写文章</Button>
+        <Button className='reg'>注册</Button>
+      </Addition>
     </HeaderWrapper>
   );
 };
