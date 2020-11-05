@@ -30,21 +30,22 @@ const Header = () => {
   // const focused = useSelector((state) => state.header.focused);
   // const focused = useSelector((state) => state.header.get('focused'));
   const focused = useSelector((state) => state.getIn(['header','focused']));
-
+  const list = useSelector((state) => state.getIn(['header','list']));
   
   // ==============================================
   const dispatch = useDispatch(); 
   const handleInputFocus = () => {
     // setFocused(true);
     dispatch(actionCreators.searchFocus());
+    dispatch(actionCreators.getHotSearchList())
   }
   const handleInputBlur = () => {
     // setFocused(false);
     dispatch(actionCreators.searchBlur());
   }
 
-  const getListArea = (show) => {
-    if (show) {
+  const getListArea = (isShow) => {
+    if (isShow) {
       return (
         <SearchInfo>
         <SearchInfoTitle>
@@ -52,9 +53,12 @@ const Header = () => {
           <SearchInfoSwitch>換一換</SearchInfoSwitch>
         </SearchInfoTitle>
         <SearchInfoList>
-          <SearchInfoItem>教育</SearchInfoItem>
+          {list.map(item => (
+            <SearchInfoItem key={item}>{item}</SearchInfoItem>    
+          ))}
+          {/* <SearchInfoItem>教育</SearchInfoItem>
           <SearchInfoItem>簡書</SearchInfoItem>
-          <SearchInfoItem>投稿</SearchInfoItem>
+          <SearchInfoItem>投稿</SearchInfoItem> */}
         </SearchInfoList>
       </SearchInfo>
       )
