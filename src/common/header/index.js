@@ -20,21 +20,6 @@ import {
   Button
 } from './style';
 
-// const {} = actionCreators
-// 熱門搜索換頁功能實現
-// 1.用pageList陣列展示第一頁
-    // 1.先把list轉成js陣列
-    // 2.用pageList循環來讀取JsList 並push
-// 2.換一批 改成mosueIn Enter決定出現與否 顯用jsx函數測試123
-// 接下來換改數據成功
-// 測試流程先看console有了沒報錯 換檢查redux
-// 接下來用資料狀態 來判斷顯示畫面
-// 3.換一批 的換頁功能
-//  1.寫完dispatch 到reducer 想到需要設定的數據
-//  2.操作頁面邏輯寫再這邊 檢查要傳過去的數據
-// key錯誤 注意getListArea一開始就會執行，改程獲取數據才做循環(數據改動就會再渲染)
-// react的async await
-// state.merge優化 性能更好 多set會返回多次
 
 
 const Header = () => {
@@ -51,10 +36,10 @@ const Header = () => {
 
   // ==============================================
   const dispatch = useDispatch();
-  const handleInputFocus = () => {
+  const handleInputFocus = (list) => {
     // setFocused(true);
+    (list.size === 0 ) &&  dispatch(actionCreators.getHotSearchList(list));
     dispatch(actionCreators.searchFocus());
-    dispatch(actionCreators.getHotSearchList(list));
   }
   const handleInputBlur = () => {
     // setFocused(false);
@@ -143,7 +128,7 @@ const Header = () => {
 						>
               <NavSearch
                 className={focused ? 'focused' :''}
-                onFocus={handleInputFocus}
+                onFocus={ () => { handleInputFocus(list) }}
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>

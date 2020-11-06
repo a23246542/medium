@@ -38,10 +38,10 @@ export const mouseLeave = () => ({
   type: actionTypes.MOUSE_LEAVE
 })
 
-export const getHotSearchList = (list) => {
+export const getHotSearchList = () => {
   return (dispatch) => {
     // console.log(list);
-    list.size === 0 && api.getHotSearchList()
+    api.getHotSearchList()
     .then((res) => {
       dispatch(changeList(res.data.data))
       // console.log(res.data.data);
