@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {useSelector,useDispatch} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 // import * as actionCreators from './store/actionCreators';
@@ -36,9 +36,16 @@ const Header = () => {
 
   // ==============================================
   const dispatch = useDispatch();
-  const handleInputFocus = (list) => {
+
+  useEffect(() => {
+    const fetchData = async () => await dispatch(actionCreators.getHotSearchList(list));
+    fetchData();
+  },[])
+
+  // @@為何這邊也要async await
+  const handleInputFocus = async (list) => {
     // setFocused(true);
-    (list.size === 0 ) &&  dispatch(actionCreators.getHotSearchList(list));
+    (list.size === 0 ) &&  await dispatch(actionCreators.getHotSearchList(list));
     dispatch(actionCreators.searchFocus());
   }
   const handleInputBlur = () => {

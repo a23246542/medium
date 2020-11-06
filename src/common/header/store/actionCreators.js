@@ -3,7 +3,7 @@ import {fromJS} from 'immutable';
 import axios from 'axios';
 import api from '../../../api';
 
-const changeList = (data) => ({
+const changeListAction = (data) => ({
   type: actionTypes.CHANGE_LIST,
   data:fromJS(data),
   totalPages:Math.ceil(data.length / 10),
@@ -39,11 +39,11 @@ export const mouseLeave = () => ({
 })
 
 export const getHotSearchList = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     // console.log(list);
-    api.getHotSearchList()
+    await api.getHotSearchList()
     .then((res) => {
-      dispatch(changeList(res.data.data))
+      dispatch(changeListAction(res.data.data))
       // console.log(res.data.data);
     })
   }
