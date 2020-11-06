@@ -44,7 +44,12 @@ export const getHotSearchList = (list) => {
     list.size === 0 && api.getHotSearchList()
     .then((res) => {
       dispatch(changeList(res.data.data))
-      console.log(res.data.data);
+      // console.log(res.data.data);
     })
   }
 }
+
+export const changePage = (page) => ({
+  type:actionTypes.CHANGE_PAGE,
+  page
+})

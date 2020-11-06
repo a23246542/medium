@@ -45,7 +45,8 @@ const Header = () => {
   const focused = useSelector((state) => state.getIn(['header','focused']));
   const mouseIn = useSelector((state) => state.getIn(['header','mouseIn']));
   const list = useSelector((state) => state.getIn(['header','list']));
-  const thisPage = useSelector((state) => state.getIn(['header','page']));
+  const thisPage = useSelector((state) => state.getIn(['header','thisPage']));
+  const totalPages = useSelector((state) => state.getIn(['header','totalPages']));
 
 
   // ==============================================
@@ -70,6 +71,16 @@ const Header = () => {
     dispatch(actionCreators.mouseLeave())
   }
 
+
+  const handlePageChange = () => { // %%放在getListArea後面好像會找不到
+    // if (thisPage!==totalPages){
+    if (thisPage < totalPages){
+      dispatch(actionCreators.changePage(thisPage + 1));
+    } else {
+      dispatch(actionCreators.changePage(1))
+    }
+  }
+
   const getListArea = () => { //渲染狀態focused mouseIn list
     const JsList = list.toJS(); // %%不可更改 list.toJs is not a function
     const pageList = [];
@@ -82,20 +93,22 @@ const Header = () => {
         );
       }
     }
-    console.log(mouseIn);//!!一開始進來渲染一次 接著fouced改變渲染一次 等list資料回來又渲染一次
+    // console.log(mouseIn);//!!一開始進來渲染一次 接著fouced改變渲染一次 等list資料回來又渲染一次
 
     if ( focused || mouseIn ) {
       return (
         <SearchInfo
-          onMouseEnter = {handleMouseEnter}
-          onMouseLeave = {handleMouseLeave}
+          onMouseEnter = { handleMouseEnter }
+          onMouseLeave = { handleMouseLeave }
         >
           <SearchInfoTitle>
             熱門搜索
-            <SearchInfoSwitch>換一換</SearchInfoSwitch>
+            <SearchInfoSwitch
+              onClick = { handlePageChange }
+            >換一換</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            {pageList}
+            { pageList }
             {/* {list.map(item => (
               <SearchInfoItem key={item}>{item}</SearchInfoItem>
             ))} */}
@@ -109,6 +122,8 @@ const Header = () => {
       return null;
     }
   }
+
+
 
   return (
     <HeaderWrapper>
