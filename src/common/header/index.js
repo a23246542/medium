@@ -53,7 +53,7 @@ const Header = () => {
   const handleInputFocus = () => {
     // setFocused(true);
     dispatch(actionCreators.searchFocus());
-    dispatch(actionCreators.getHotSearchList());
+    dispatch(actionCreators.getHotSearchList(list));
   }
   const handleInputBlur = () => {
     // setFocused(false);
@@ -74,13 +74,15 @@ const Header = () => {
     const JsList = list.toJS(); // %%不可更改 list.toJs is not a function
     const pageList = [];
 
-    for(let i = (thisPage - 1) * 10 ; i < thisPage * 10 ; i++) {
-      // 第一頁0~小於10 第二頁10~小於20
-      pageList.push(
-        <SearchInfoItem key={JsList[i]} >{JsList[i]}</SearchInfoItem> //JsList才能[i]
-      );
+    if(JsList.length) {
+      for(let i = (thisPage - 1) * 10 ; i < thisPage * 10 ; i++) {
+        // 第一頁0~小於10 第二頁10~小於20
+        pageList.push(
+          <SearchInfoItem key={JsList[i]} >{JsList[i]}</SearchInfoItem> //JsList才能[i]
+        );
+      }
     }
-    console.log(mouseIn);//一開始進來渲染一次 接著fouced改變渲染一次 等list資料回來又渲染一次
+    console.log(mouseIn);//!!一開始進來渲染一次 接著fouced改變渲染一次 等list資料回來又渲染一次
 
     if ( focused || mouseIn ) {
       return (
