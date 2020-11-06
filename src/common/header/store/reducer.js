@@ -3,9 +3,11 @@ import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
   focused:false,
+  mouseIn:false,
   list: [],
   page:1,
   totalPages:1
+
 })
 //純函數
 export default (state=defaultState,action) => {
@@ -26,6 +28,10 @@ export default (state=defaultState,action) => {
     case actionTypes.CHANGE_LIST:
       return state.set('list', action.data)
       .set('totalPages', action.totalPages);
+    case actionTypes.MOUSE_ENTER:
+      return state.set('mouseIn',true);
+    case actionTypes.MOUSE_LEAVE:
+      return state.set('mouseIn',false);
     default:
       return state;
   }
