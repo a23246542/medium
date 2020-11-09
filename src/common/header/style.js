@@ -84,9 +84,9 @@ export const NavSearch = styled.input.attrs({
 	margin-top: 9px;
   margin-left: 20px;
 	box-sizing: border-box;
+	border-radius: 19px;
 	border: none;
 	outline: none;
-	border-radius: 19px;
 	background: #eee;
 	font-size: 14px;
 	color: #666;

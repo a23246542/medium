@@ -1,0 +1,8 @@
+{
+  "eslint.alwaysShowStatus": true,
+  "stylelint.alwaysShowStatus": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+}
