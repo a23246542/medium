@@ -10,7 +10,7 @@ const defaultState = fromJS({
 
 })
 //純函數
-export default (state=defaultState,action) => {
+export default (state = defaultState,action) => {
 
   // const { type , payload } = action;
 
