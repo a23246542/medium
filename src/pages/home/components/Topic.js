@@ -1,25 +1,23 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {TopicWrapper, TopicItem} from '../style';
 
 const Topic = () => {
+
+  const topicList = useSelector((state)=>state.getIn(['home','topicList']));
+
   return (
     <TopicWrapper>
-      <TopicItem>
-        <img
-          className="topicItem__pic"
-          src="//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-          alt=""
+      {topicList.map((item)=>(
+        <TopicItem key={item.get('id')}>
+          <img
+            className="topicItem__pic"
+            src={item.get('imgUrl')}
+            alt=""
         />
-        社会热点
-      </TopicItem>
-      <TopicItem>
-        <img
-          className="topicItem__pic"
-          src="//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-          alt=""
-        />
-        社会热点
-      </TopicItem>
+        {item.get('title')}
+        </TopicItem>
+      ))}
     </TopicWrapper>
   )
 }
