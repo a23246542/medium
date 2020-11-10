@@ -4,6 +4,8 @@ const Mock = require('mockjs');
 // const proxy = require('http-proxy-middleware')
 const app = express();
 const headersList = require('./data/headerList');
+const home = require('./data/home');
+const topic = require('./data/topic');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -30,8 +32,20 @@ app.get('/headerList',(req,res) => {
         res.json(Mock.mock(headersList))
       },5000
     )
-  })
+})
 
+app.get('/home',(req,res)=>{
+  res.json(Mock.mock(home));
+});
+
+app.get('/topic',(req,res)=>{
+  setTimeout(function(){
+    res.json(Mock.mock(topic));
+  },3000)
+});
+// app.get('/home/topic',(req,res)=>{
+//   res.json(Mock.mock(home));
+// })
   // Mock.setUp();
 
 app.listen(5000,()=>{

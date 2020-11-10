@@ -9,8 +9,11 @@ api.defaults.timeout = 10500;
 
 
 export default {
-  getHotSearchList(){
+  getHotSearchList() {
     // return api.get('/api/headerList.json');
     return api.get('/headerList');//@@直接連代理都不用 後端開啟跨域
+  },
+  getTopicList() {
+    return api.get('/topic');
   }
 }
