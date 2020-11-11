@@ -9,12 +9,14 @@ const Topic = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData().then(()=>{
-      setCount(1);
-    });
+    // fetchData().then(()=>{
+      dispatch(actionCreators.getTopicList())
+      .then(()=>{
+        setCount(1);
+      });
     console.log(topicList);
     // setCount(1);
-  }, [])
+  }, []);
 
   async function fetchData () {
     await dispatch(actionCreators.getTopicList())
