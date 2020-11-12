@@ -4,7 +4,10 @@ import * as actionTypes from './actionTypes';
 
 
 const defaultState = fromJS({
-  topicList: []
+  topicList: [],
+  articleList: [
+  
+  ],
   // topicList: [
   //   {
   //   "id": 1,
@@ -44,9 +47,11 @@ export default (state = defaultState,action) => {
   // const { type , payload } = action;
 
   switch (action.type) {
-    case actionTypes.CHANGE_LIST:
+    case actionTypes.CHANGE_TOPIC_LIST:
       console.log('action',action.topics);
       return state.set('topicList', action.topics);
+    case actionTypes.CHANGE_ARTICLE_LIST:
+      return state.set('articleList', action.articles)
     default:
       return state
   }

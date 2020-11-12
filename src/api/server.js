@@ -6,6 +6,7 @@ const app = express();
 const headersList = require('./data/headerList');
 const home = require('./data/home');
 const topic = require('./data/topic');
+const article = require('./data/article');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -47,6 +48,12 @@ app.get('/topic',(req,res)=>{
 //   res.json(Mock.mock(home));
 // })
   // Mock.setUp();
+
+app.get('/article',(req,res) => {
+  setTimeout(function(){
+    res.json(Mock.mock(article))
+  },1000)
+})
 
 app.listen(5000,()=>{
   console.log('监听端口');

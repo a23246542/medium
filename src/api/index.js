@@ -15,5 +15,8 @@ export default {
   },
   getTopicList() {
     return api.get('/topic');
+  },
+  getArticleList() {
+    return api.get('/article');
   }
 }
