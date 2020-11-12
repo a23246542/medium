@@ -4,7 +4,7 @@ import {TopicWrapper, TopicItem} from '../style';
 import  { actionCreators } from '../store';
 
 const Topic = () => {
-  const [count,setCount] = useState(0)
+  // const [count,setCount] = useState(0)
   const topicList = useSelector((state)=>state.getIn(['home','topicList']));
   const dispatch = useDispatch();
 
@@ -12,16 +12,13 @@ const Topic = () => {
     // fetchData().then(()=>{
       dispatch(actionCreators.getTopicList())
       .then(()=>{
-        setCount(1);
+        // setCount(1);
       });
-    console.log(topicList);
-    // setCount(1);
   }, []);
 
-  async function fetchData () {
-    await dispatch(actionCreators.getTopicList())
-  }
-  console.log(topicList);
+  // async function fetchData () {
+  //   await dispatch(actionCreators.getTopicList())
+  // }
 
   return (
     <TopicWrapper>
@@ -35,7 +32,7 @@ const Topic = () => {
         {item.get('title')}
         </TopicItem>
       ))}
-      {count}
+      {/* {count} */}
     </TopicWrapper>
   )
 }

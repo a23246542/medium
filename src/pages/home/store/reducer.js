@@ -1,4 +1,3 @@
-// import * as actionTypes from './actionTypes';
 import { fromJS } from 'immutable';
 // import { CHANGE_LIST } from '../../../common/header/store/actionTypes';
 import * as actionTypes from './actionTypes';
