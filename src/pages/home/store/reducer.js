@@ -4,39 +4,10 @@ import * as actionTypes from './actionTypes';
 
 
 const defaultState = fromJS({
-  topicList: []
-  // topicList: [
-  //   {
-  //   "id": 1,
-  //   "title": "社会热点",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  //   {
-  //   "id": 2,
-  //   "title": "手手绘",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  //   {
-  //   "id": 3,
-  //   "title": "社会热点",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  //   {
-  //   "id": 4,
-  //   "title": "手手绘",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  //   {
-  //   "id": 5,
-  //   "title": "社会热点",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  //   {
-  //   "id": 6,
-  //   "title": "手手绘",
-  //   "imgUrl": "//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64"
-  //   },
-  // ],
+  topicList: [],
+  articleList: [],
+  articlePage: 1,
+  showScroll: false,
 })
 //純函數
 export default (state = defaultState,action) => {
@@ -44,9 +15,33 @@ export default (state = defaultState,action) => {
   // const { type , payload } = action;
 
   switch (action.type) {
-    case actionTypes.CHANGE_LIST:
+    case actionTypes.CHANGE_TOPIC_LIST:
       console.log('action',action.topics);
       return state.set('topicList', action.topics);
+    case actionTypes.CHANGE_ARTICLE_LIST:
+      return state.set('articleList', action.articles)
+    // case actionTypes.CHANGE_ARTICLE_PAGE
+    case actionTypes.CHANGE_ARTICLE_PAGE:
+      return state.set('articlePage', action.nextPage)
+    case actionTypes.ADD_ARTICLE_LIST:
+      console.log(action.moreList);
+      // return state.merge({ %%說沒有unique "key" 原來是沒有concact
+      //   articleList:action.moreList,
+      //   // articlePage:action.nextPage
+      // })
+
+      // return state.set('articleList', action.moreList);
+      // return state.get('articleList').concat(action.moreList); //%%這個不行
+      return state.set('articleList', state.get('articleList').concat(action.moreList));
+
+      // return state.merge({ //%%key要字串
+      //   'articleList': state.get('articleList').concat(action.moreList),
+      //   // articleList: state.get('articleList'), %%除錯用
+      // });
+      // console.log(action.moreList);
+    case actionTypes.TOGGLE_TOP_SHOW:
+      return state.set('showScroll', action.isShow);
+
     default:
       return state
   }
