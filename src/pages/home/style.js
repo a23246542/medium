@@ -93,3 +93,18 @@ export const LoadMore = styled.div`
   color: #fff;
   cursor: pointer;
 `
+export const BackTop = styled.div`
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  z-index: 100;
+  width: 70px;
+  height:50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 14px;
+  border-radius:10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  /* background-color: #ccc; */
+`

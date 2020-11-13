@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+import smoothscroll from 'smoothscroll-polyfill';
 import store from './store';
 import { GlobalStyle } from './style';
 import { IconFont } from './statics/iconfont/iconfont';
@@ -14,6 +15,7 @@ import Home from './pages/home';
 import Detail from './pages/detail'
 
 function App() {
+  smoothscroll.polyfill();
   return (
     <Provider store={store}>
       <Fragment>

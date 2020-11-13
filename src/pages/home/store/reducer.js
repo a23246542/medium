@@ -7,6 +7,7 @@ const defaultState = fromJS({
   topicList: [],
   articleList: [],
   articlePage: 1,
+  showScroll: false,
 })
 //純函數
 export default (state = defaultState,action) => {
@@ -38,7 +39,8 @@ export default (state = defaultState,action) => {
       //   // articleList: state.get('articleList'), %%除錯用
       // });
       // console.log(action.moreList);
-
+    case actionTypes.TOGGLE_TOP_SHOW:
+      return state.set('showScroll', action.isShow);
 
     default:
       return state

@@ -61,4 +61,10 @@ export const getMoreList = (page) => {
 }
 
 
+export const toggleTopShow = (isShow) => ({
+  type:actionTypes.TOGGLE_TOP_SHOW,
+  isShow
+})
+
+
 

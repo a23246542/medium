@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+
+  html,body{
+    scroll-behavior: smooth;
+  }
   body {
     margin: 0;
     padding: 0;
