@@ -1,2 +1,4 @@
 export const CHANGE_TOPIC_LIST = 'home/CHANGE_TOPIC_LIST';
 export const CHANGE_ARTICLE_LIST = 'home/CHANGE_ARTICLE_LIST';
+export const CHANGE_ARTICLE_PAGE = 'home/CHANGE_ARTICLE_PAGE';
+export const ADD_ARTICLE_LIST = 'home/ADD_ARTICLE_LIST';

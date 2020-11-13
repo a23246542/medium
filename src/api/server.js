@@ -50,8 +50,14 @@ app.get('/topic',(req,res)=>{
   // Mock.setUp();
 
 app.get('/article',(req,res) => {
+  console.log(req.query.page)
+  const page = req.query.page;
+  let list = JSON.parse(JSON.stringify(article));
+  const nextList = list.data.articleList.slice( 5*(page-1) ,5*page);
+  list.data.articleList = nextList;
   setTimeout(function(){
-    res.json(Mock.mock(article))
+    // res.json(Mock.mock(article))
+    res.json(Mock.mock(list))
   },1000)
 })
 
