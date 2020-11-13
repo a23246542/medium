@@ -4,9 +4,10 @@ import App from './App';
 // import './style.js';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App/>
-  </React.StrictMode>,
+  // </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
 

@@ -9,7 +9,6 @@ const Article = () => {
   const articlePage = useSelector((state) => state.getIn(['home','articlePage']));
   const dispatch = useDispatch();
 
-  console.log(articles);
 
 
   useEffect(()=>{

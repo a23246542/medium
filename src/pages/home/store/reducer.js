@@ -16,7 +16,6 @@ export default (state = defaultState,action) => {
 
   switch (action.type) {
     case actionTypes.CHANGE_TOPIC_LIST:
-      console.log('action',action.topics);
       return state.set('topicList', action.topics);
     case actionTypes.CHANGE_ARTICLE_LIST:
       return state.set('articleList', action.articles)
@@ -24,7 +23,6 @@ export default (state = defaultState,action) => {
     case actionTypes.CHANGE_ARTICLE_PAGE:
       return state.set('articlePage', action.nextPage)
     case actionTypes.ADD_ARTICLE_LIST:
-      console.log(action.moreList);
       // return state.merge({ %%說沒有unique "key" 原來是沒有concact
       //   articleList:action.moreList,
       //   // articlePage:action.nextPage
