@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import store from './store';
@@ -18,13 +19,16 @@ function App() {
   smoothscroll.polyfill();
   return (
     <Provider store={store}>
-        <Router>
+      <Router>
+        {/* <Switch> */}
           <GlobalStyle/>
           <IconFont/>
           <Header/>
-            <Route path="/" exact component={Home}></Route>
-            <Route path="/detail" exact component={Detail}></Route>
-        </Router>
+          {/* <Route></Route> */}
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/detail" exact component={Detail}></Route>
+        {/* </Switch> */}
+      </Router>
     </Provider>
   );
 }
