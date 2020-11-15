@@ -16,8 +16,8 @@ const changeArticleList = (data) => ({
 
 const changeArticlePage = (nextPage) => ({
   type:actionTypes.CHANGE_ARTICLE_PAGE,
-  // nextPage &&
-  nextPage:fromJS(nextPage)//@@數字是否需要
+  nextPage //
+  // nextPage:fromJS(nextPage)//@@數字是否需要
 })
 
 const addArticleList = (list) => ({
@@ -40,7 +40,8 @@ export const getTopicList = () => {
 
 export const getArticleList = () => {
   return async (dispatch) => {
-    await api.getArticleList().then((res)=>{
+    await api.getArticleList()
+    .then((res)=>{
       dispatch(changeArticleList(res.data.data.articleList))
     })
   }

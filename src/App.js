@@ -18,17 +18,13 @@ function App() {
   smoothscroll.polyfill();
   return (
     <Provider store={store}>
-      <Fragment>
-        <GlobalStyle/>
-        <IconFont/>
-        <Header/>
         <Router>
-          <Fragment>
+          <GlobalStyle/>
+          <IconFont/>
+          <Header/>
             <Route path="/" exact component={Home}></Route>
             <Route path="/detail" exact component={Detail}></Route>
-          </Fragment>
         </Router>
-      </Fragment>
     </Provider>
   );
 }

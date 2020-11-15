@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 // import * as actionCreators from './store/actionCreators';
 import {actionCreators} from './store';
 // import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -119,7 +120,9 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <Logo/>
+      <Link to="/">
+        <Logo/>
+      </Link>
       <Nav>
           <NavItem className="left">首页</NavItem>
           <NavItem className="left">下载APP</NavItem>

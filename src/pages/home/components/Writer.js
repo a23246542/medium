@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{memo} from 'react'
 
-const Writer = () => {
+const Writer = memo(() => {
   return (
     <div>
       Writer
     </div>
   )
-}
+})
 
 export default Writer
