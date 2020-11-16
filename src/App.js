@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import store from './store';
@@ -13,7 +14,8 @@ import { IconFont } from './statics/iconfont/iconfont';
 import './style.js';
 import Header from './common/header';
 import Home from './pages/home';
-import Detail from './pages/detail'
+import Detail from './pages/detail';
+import Article from './pages/home/components/Article';
 
 function App() {
   smoothscroll.polyfill();
@@ -25,8 +27,31 @@ function App() {
           <IconFont/>
           <Header/>
           {/* <Route></Route> */}
-          <Route path="/" exact component={Home}></Route>
-          <Route path="/detail" exact component={Detail}></Route>
+          <Redirect from="/" to="/home"/>
+          {/* <Route path="/home" exact component={Home}></Route> */}
+          <Switch>
+            <Route
+              path="/home"
+              component={
+                () =>
+                 <Home>
+                   <Route
+                    render={(props) => {
+                      // console.log(props);
+                      // 以目前需求簡化成如下判斷式
+                      if (props.location.pathname === "/home") {
+                        return <Article/>;
+                      } else if (props.location.pathname === "/home/detail") {
+                      // } else {
+                        return <Detail/>;
+                      }
+                    }}
+                   />
+                 </Home>
+              }
+            />
+          </Switch>
+          {/* <Route path="/detail/home" exact component={Detail}></Route> */}
         {/* </Switch> */}
       </Router>
     </Provider>

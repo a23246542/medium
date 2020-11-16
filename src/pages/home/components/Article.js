@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import api from '../../../api';
 import { actionCreators } from '../store';
 import { ListItem, ListInfo, LoadMore } from '../style';
-import { Link } from 'react-router-dom'
+import { Link, Route, Switch } from 'react-router-dom'
 
 // const usePage = () => {
 function usePage(){
@@ -13,7 +13,7 @@ function usePage(){
   return articlePage;
 }
 
-const Article = memo(() => {
+const Article = memo((props) => {
   // const store = useStore();
   const articles = useSelector((state) => state.getIn(['home','articleList']));
   // let articlePage = usePage();// %%要用在最頂層
@@ -38,12 +38,21 @@ const Article = memo(() => {
   }
 
   return (
+    // <Switch>
+    //   <Route
+    //     path={props.match.url}
+    //     render={(props) => {
+    //       if (props.location.pathname === '/home') {
+    //         return
+    //       }
+    //     }}
+    //   />
+    // </Switch>
     <div>
-      {/* {store.getState()} */}
       {
         articles.map((item)=> {
           return (
-            <Link to="/detail" key={item.get('id')}>
+            <Link to="home/detail" key={item.get('id')}>
               <ListItem>
               {/* // <ListItem key={index}> */}
                 <img className="pic" src={item.get('imgUrl')} alt=""/>
