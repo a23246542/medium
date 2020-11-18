@@ -2,13 +2,10 @@ import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators } from './store';
 import {  Switch, Route, NavLink, Link, useParams, useRouteMatch, withRouter } from "react-router-dom";
-import Topic from './components/Topic';
-import Article from './components/Article';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import Detail from '../detail';
 import PropTypes from 'prop-types';
-import RouterView from '../../route';
 import HomePage from '../homePage';
 import {
   HomeWrapper,
@@ -50,23 +47,11 @@ const Home = (props) => {
   return (
     <HomeWrapper>
       <HomeLeft>
-        <Link to={url}>homepage</Link>
-        <Link to={`${url}/detail`}>detail</Link>
-        {/* <Switch> */}
-          <Route path={`${path}`} exact render={()=><HomePage/>}>
-          </Route>
-          <Route path={`/home/detail/`} render={()=><Detail/>}>
-          </Route>
-          {/* <Route path="/home" render={(props)=>{
-            console.log('props',props);
-
-            if( props.match.url === '/home' ) {
-              return <HomePage/>
-            } else if ( props.match.url === '/home/detail') {
-              return <Detail/>
-            }
-          }}/> */}
-        {/* </Switch> */}
+        <Switch>
+          {/* {props.children} */}
+          <Route exact path={path} render={()=><HomePage/>}/>
+          <Route path={`${path}/detail`} render={()=><Detail/>}/>
+        </Switch>
       </HomeLeft>
       <HomeRight>
         <Recommend/>
