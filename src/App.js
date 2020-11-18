@@ -17,6 +17,7 @@ import Home from './pages/home';
 import Detail from './pages/detail';
 import Article from './pages/home/components/Article';
 import Topic from './pages/home/components/Topic';
+import RouterView from './route';
 
 function App() {
   smoothscroll.polyfill();
@@ -32,7 +33,9 @@ function App() {
             <Redirect to="/home"/>
           </Route>
           {/* <Route path="/home" exact component={Home}></Route> */}
-          <Switch>
+          <RouterView/>
+          {/* <Home/> */}
+          {/* <Switch>
             <Route
               path="/home"
               component={
@@ -59,7 +62,7 @@ function App() {
                  </Home>
               }
             />
-          </Switch>
+          </Switch> */}
           {/* <Route path="/detail/home" exact component={Detail}></Route> */}
         {/* </Switch> */}
       </Router>

@@ -1,13 +1,15 @@
 import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators } from './store';
-import { Route, NavLink, Switch, withRouter } from "react-router-dom";
+import {  Switch, Route, NavLink, Link, useParams, useRouteMatch, withRouter } from "react-router-dom";
 import Topic from './components/Topic';
 import Article from './components/Article';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import Detail from '../detail';
 import PropTypes from 'prop-types';
+import RouterView from '../../route';
+import HomePage from '../homePage';
 import {
   HomeWrapper,
   HomeLeft,
@@ -18,6 +20,8 @@ import {
 const Home = (props) => {
   const showScroll = useSelector((state) => state.getIn(['home','showScroll']));
   const dispatch = useDispatch();
+
+  let { path,url } = useRouteMatch();
 
   useEffect(() => {
     window.addEventListener('scroll', changeScrollTopShow)
@@ -42,28 +46,27 @@ const Home = (props) => {
     })
   }
   console.log(props);
+  console.log(path);
   return (
     <HomeWrapper>
       <HomeLeft>
-        {/* <img className="banner-img" alt="Banner" src="//upload.jianshu.io/admin_banners/web_images/4318/60781ff21df1d1b03f5f8459e4a1983c009175a5.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540" />
-        <Topic/> */}
-        {/* <Switch>
-          <Route
-            path={props.match.path}
-            render={(props) => {
-              // console.log(props);
-              // 以目前需求簡化成如下判斷式
-              if (props.location.pathname === "/home") {
-                return <Article/>;
-              // } else if (props.location.pathname === "/home/detail") {
-              } else {
-                return <Detail/>;
-              }
-            }}
-          />
-        </Switch> */}
-        {props.children}
-        {/* <Article/> */}
+        <Link to={url}>homepage</Link>
+        <Link to={`${url}/detail`}>detail</Link>
+        {/* <Switch> */}
+          <Route path={`${path}`} exact render={()=><HomePage/>}>
+          </Route>
+          <Route path={`/home/detail/`} render={()=><Detail/>}>
+          </Route>
+          {/* <Route path="/home" render={(props)=>{
+            console.log('props',props);
+
+            if( props.match.url === '/home' ) {
+              return <HomePage/>
+            } else if ( props.match.url === '/home/detail') {
+              return <Detail/>
+            }
+          }}/> */}
+        {/* </Switch> */}
       </HomeLeft>
       <HomeRight>
         <Recommend/>

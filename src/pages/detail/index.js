@@ -1,6 +1,9 @@
 import React from 'react';
 
-const detail = () => {
+const Detail = (props) => {
+  console.log('====================================');
+  console.log(props);
+  console.log('====================================');
   return (
     <div>
       detail
@@ -8,4 +11,4 @@ const detail = () => {
   );
 }
 
-export default detail;
+export default Detail;
