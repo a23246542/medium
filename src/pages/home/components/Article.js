@@ -25,12 +25,12 @@ const Article = memo((props) => {
 
   const dispatch = useDispatch();
   console.log('Article render');
-  
+
   useEffect(()=>{
     // api.getArticleList().then((res) =>{ console.log(res);})
     dispatch(actionCreators.getArticleList())
   },[])
-  
+
   const getMoreList = (articlePage) => {
     dispatch(actionCreators.getMoreList(articlePage));
     // articlePage = usePage();%%不能這邊用
