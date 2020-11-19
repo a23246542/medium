@@ -11,7 +11,6 @@ const changeTopicList = (data) => ({
 const changeArticleList = (data) => ({
   type:actionTypes.CHANGE_ARTICLE_LIST,
   articles:fromJS(data),
-
 })
 
 const changeArticlePage = (nextPage) => ({
@@ -25,6 +24,11 @@ const addArticleList = (list) => ({
   moreList: fromJS(list),
   // moreList: List(list),
   // nextPage: fromJS(nextPage)
+})
+
+const changeWriterList = (writeAry) => ({
+  type:actionTypes.CHANGE_WRITER_LIST,
+  writerList: fromJS(writeAry),
 })
 
 
@@ -66,6 +70,17 @@ export const toggleTopShow = (isShow) => ({
   type:actionTypes.TOGGLE_TOP_SHOW,
   isShow
 })
+
+export const getWriters = () => {
+  return async (dispatch) => {
+    await api.getWriterList()
+    .then((res) => {
+      const result = res.data.data.writerList;
+      dispatch(changeWriterList(result))
+    })
+  }
+}
+
 
 
 

@@ -8,6 +8,7 @@ const defaultState = fromJS({
   articleList: [],
   articlePage: 1,
   showScroll: false,
+  writerList: [],
 })
 //純函數
 export default (state = defaultState,action) => {
@@ -39,9 +40,10 @@ export default (state = defaultState,action) => {
       // console.log(action.moreList);
     case actionTypes.TOGGLE_TOP_SHOW:
       return state.set('showScroll', action.isShow);
-
+    case actionTypes.CHANGE_WRITER_LIST:
+      return state.set('writerList', action.writerList);
     default:
-      return state
+      return state;
   }
   // return state;
 }

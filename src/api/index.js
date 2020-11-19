@@ -21,5 +21,8 @@ export default {
   },
   getArticleDetail(id = 35) {
     return api.get(`/detail?id=${id}`);
+  },
+  getWriterList() {
+    return api.get('/writer');
   }
 }

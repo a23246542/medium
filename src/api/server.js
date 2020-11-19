@@ -8,6 +8,7 @@ const home = require('./data/home');
 const topic = require('./data/topic');
 const article = require('./data/article');
 const detail = require('./data/detail');
+const writer = require('./data/writer');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -66,6 +67,13 @@ app.get('/detail',(req,res) => {
   setTimeout(function(){
     res.json(Mock.mock(detail));
   },1000)
+})
+
+// app.get('/writer',(res) => {// !!!一定要兩個參數
+app.get('/writer',(req, res) => {
+  setTimeout(function(){
+      res.json((writer));
+  },1700)
 })
 
 app.listen(5000,()=>{
