@@ -15,7 +15,7 @@ const Writer = memo(() => {
   },[]);
 
   // console.log(writerList);
-  console.log('writer render');
+  // console.log('writer render');
 
   const getWriter = async () => {
     await dispatch(actionCreators.getWriters());

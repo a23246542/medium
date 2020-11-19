@@ -42,15 +42,15 @@ const Home = (props) => {
       behavior:'smooth', //@@
     })
   }
-  console.log(props);
-  console.log(path);
+  // console.log(props);
+  // console.log(path);
   return (
     <HomeWrapper>
       <HomeLeft>
         <Switch>
           {/* {props.children} */}
           <Route exact path={path} render={()=><HomePage/>}/>
-          <Route path={`${path}/detail`} render={()=><Detail/>}/>
+          <Route path={`${path}/detail/:id`} render={()=><Detail/>}/>
         </Switch>
       </HomeLeft>
       <HomeRight>

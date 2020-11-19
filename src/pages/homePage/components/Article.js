@@ -52,7 +52,7 @@ const Article = memo((props) => {
       {
         articles.map((item)=> {
           return (
-            <Link to="/home/detail" key={item.get('id')}>
+            <Link to="/home/detail/356842" key={item.get('id')}>
               <ListItem>
               {/* // <ListItem key={index}> */}
                 <img className="pic" src={item.get('imgUrl')} alt=""/>
