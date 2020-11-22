@@ -151,7 +151,7 @@ const Header = () => {
       </Nav>
       <Addition>
         <Button className='writing'>写文章</Button>
-        <Button className='reg'>注册</Button>
+        <Button className='reg'>登陸</Button>
       </Addition>
     </HeaderWrapper>
   );
