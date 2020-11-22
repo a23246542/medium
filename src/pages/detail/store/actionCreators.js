@@ -7,8 +7,9 @@ const changeDetail = ({title,content}) => ({ //%%括號
   content
 })
 
-export const getDetail = () => {
+export const getDetail = (id) => {
   return ( dispatch ) => {
+    console.log('action',id);
     api.getArticleDetail()
     .then((res) => {
       const result = res.data.data.detail;

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import api from '../../../api';
 import { actionCreators } from '../store';
 import { ListItem, ListInfo, LoadMore } from '../style';
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useRouteMatch, withRouter } from 'react-router-dom'
 
 // const usePage = () => {
 function usePage(){
@@ -52,7 +52,7 @@ const Article = memo((props) => {
       {
         articles.map((item)=> {
           return (
-            <Link to="/home/detail/356842" key={item.get('id')}>
+            <Link to={`/home/detail?id=${item.get('id')}`} key={item.get('id')}>
               <ListItem>
               {/* // <ListItem key={index}> */}
                 <img className="pic" src={item.get('imgUrl')} alt=""/>

@@ -2,9 +2,17 @@ import React,{useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators } from './store';
 import { DetailWrapper, Header, Content } from './style';
+import { useRouteMatch, useLocation, withRouter } from 'react-router-dom';
 
 const Detail = (props) => {
-
+  // let match = useRouteMatch();
+  let { search } = useLocation();
+  // console.log(match);!!
+  // console.log(props);!!
+  // console.log(search);
+  const query = new URLSearchParams(search);
+  // console.log(query.get('id'));
+  const id = query.get('id');  
   const title = useSelector((state) => state.getIn(['detail','title']));
   const content = useSelector((state => state.getIn(['detail','content'])));
   const dispatch = useDispatch();
@@ -14,7 +22,7 @@ const Detail = (props) => {
   },[])
 
   const getDetail = () => {
-    dispatch(actionCreators.getDetail())
+    dispatch(actionCreators.getDetail(id))
   }
 
   return (
@@ -29,4 +37,5 @@ const Detail = (props) => {
   );
 }
 
+// export default withRouter(Detail);
 export default Detail;

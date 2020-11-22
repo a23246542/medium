@@ -17,7 +17,6 @@ import {
 const Home = (props) => {
   const showScroll = useSelector((state) => state.getIn(['home','showScroll']));
   const dispatch = useDispatch();
-
   let { path,url } = useRouteMatch();
 
   useEffect(() => {
@@ -50,7 +49,8 @@ const Home = (props) => {
         <Switch>
           {/* {props.children} */}
           <Route exact path={path} render={()=><HomePage/>}/>
-          <Route path={`${path}/detail/:id`} render={()=><Detail/>}/>
+          {/* <Route path={`${path}/detail/:id`} render={()=><Detail/>}/> */}
+          <Route path={`${path}/detail`} render={()=><Detail/>}/>
         </Switch>
       </HomeLeft>
       <HomeRight>
