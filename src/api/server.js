@@ -7,6 +7,7 @@ const headersList = require('./data/headerList');
 const home = require('./data/home');
 const topic = require('./data/topic');
 const article = require('./data/article');
+const detail = require('./data/detail');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -58,6 +59,12 @@ app.get('/article',(req,res) => {
   setTimeout(function(){
     // res.json(Mock.mock(article))
     res.json(Mock.mock(list))
+  },1000)
+})
+
+app.get('/detail',(req,res) => {
+  setTimeout(function(){
+    res.json(Mock.mock(detail));
   },1000)
 })
 

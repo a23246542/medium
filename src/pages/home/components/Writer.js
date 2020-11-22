@@ -1,10 +1,9 @@
-import React,{memo} from 'react'
+import React,{memo} from 'react';
+import { WriterWrapper } from '../style';
 
 const Writer = memo(() => {
   return (
-    <div>
-      Writer
-    </div>
+    <WriterWrapper></WriterWrapper>
   )
 })
 

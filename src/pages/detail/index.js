@@ -1,13 +1,31 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionCreators } from './store';
+import { DetailWrapper, Header, Content } from './style';
 
 const Detail = (props) => {
-  console.log('====================================');
-  console.log(props);
-  console.log('====================================');
+
+  const title = useSelector((state) => state.getIn(['detail','title']));
+  const content = useSelector((state => state.getIn(['detail','content'])));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getDetail();
+  },[])
+
+  const getDetail = () => {
+    dispatch(actionCreators.getDetail())
+  }
+
   return (
-    <div>
-      detail
-    </div>
+    <DetailWrapper>
+      <Header>
+        {title}
+      </Header>
+      <Content dangerouslySetInnerHTML={{
+        __html:content
+      }}/>
+    </DetailWrapper>
   );
 }
 

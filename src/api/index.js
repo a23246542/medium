@@ -18,5 +18,8 @@ export default {
   },
   getArticleList(page = 1) {
     return api.get(`/article?page=${page}`);
+  },
+  getArticleDetail(id = 35) {
+    return api.get(`/detail?id=${id}`);
   }
 }
