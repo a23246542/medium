@@ -6,7 +6,7 @@ const login = () => ({
   value: true
 })
 
-const logout = () => ({
+export const logout = () => ({
   type: actionTypes.LOGOUT,
   value: false
 })

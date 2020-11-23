@@ -6,8 +6,8 @@ const aColor = "#333";
 
 export const HomeWrapper = styled.div`
   overflow: hidden;
-  margin: 0 auto;
   width: 960px;
+  margin: 0 auto;
 `;
 
 
