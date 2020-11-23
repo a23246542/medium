@@ -6,8 +6,14 @@ const Login = () => {
   return (
     <LoginWrapper>
       <LoginBox>
-        <Input/>
-        <Input/>
+        <Input>
+          <i className="fas fa-user"></i>
+          <input type="text" placeholder="請輸入帳號"/>
+        </Input>
+        <Input>
+          <i className="fas fa-unlock-alt"></i>
+          <input type="text" placeholder="請輸入帳密"/>
+        </Input>
         <Button>登陸</Button>
       </LoginBox>
     </LoginWrapper>
