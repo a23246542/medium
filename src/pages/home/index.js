@@ -4,7 +4,7 @@ import { actionCreators } from './store';
 import {  Switch, Route, NavLink, Link, useParams, useRouteMatch, withRouter } from "react-router-dom";
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
-import Detail from '../detail';
+import Detail from '../detail/loadable.js';
 import PropTypes from 'prop-types';
 import HomePage from '../homePage';
 import {
@@ -51,6 +51,7 @@ const Home = (props) => {
           <Route exact path={path} render={()=><HomePage/>}/>
           {/* <Route path={`${path}/detail/:id`} render={()=><Detail/>}/> */}
           <Route path={`${path}/detail`} render={()=><Detail/>}/>
+          {/* <Route path={`${path}/detail`} component={Detail}/> */}
         </Switch>
       </HomeLeft>
       <HomeRight>

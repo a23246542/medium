@@ -37,5 +37,5 @@ const Detail = (props) => {
   );
 }
 
-// export default withRouter(Detail);
-export default Detail;
+export default withRouter(Detail);
+// export default Detail;
