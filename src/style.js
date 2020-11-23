@@ -58,11 +58,17 @@ export const ResetStyle = createGlobalStyle`
 
 
   export const GlobalStyle = createGlobalStyle`
+
+    #root {
+      height: 100%;
+    }
+    
     html,body{
       width: 100%;
       height: 100%;
       scroll-behavior: smooth;
     }
+
 
     body {
       color: rgba(0,0,0,.65);

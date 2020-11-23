@@ -9,6 +9,7 @@ const topic = require('./data/topic');
 const article = require('./data/article');
 const detail = require('./data/detail');
 const writer = require('./data/writer');
+const signIn = require('./data/signIn');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -74,6 +75,14 @@ app.get('/writer',(req, res) => {
   setTimeout(function(){
       res.json((writer));
   },1700)
+})
+
+app.post('/auth/signIn',(req, res) => {
+  // console.log(req.body);
+  const { account, password } = req.body;
+  if ( account==='admin' && password ==='admin' ) {
+    res.json(signIn);
+  }
 })
 
 app.listen(5000,()=>{

@@ -1,6 +1,5 @@
 import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
-import { CHANGE_ARTICLE_PAGE } from '../../home/store/actionTypes';
 
 const defaultStatus = fromJS({
   title:'衡水中学...',
