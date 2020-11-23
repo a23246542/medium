@@ -3,6 +3,7 @@ import React from 'react';
 import { LoginWrapper, LoginBox, Input, Button } from './style';
 
 const Login = () => {
+
   return (
     <LoginWrapper>
       <LoginBox>

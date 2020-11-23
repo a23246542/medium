@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react';
-import {useSelector,useDispatch} from 'react-redux';
+import React,{useState, useEffect,} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 // import * as actionCreators from './store/actionCreators';
 import {actionCreators} from './store';
@@ -33,7 +33,7 @@ const Header = () => {
   const list = useSelector((state) => state.getIn(['header','list']));
   const thisPage = useSelector((state) => state.getIn(['header','thisPage']));
   const totalPages = useSelector((state) => state.getIn(['header','totalPages']));
-
+  const login = useSelector((state) => state.getIn(['login','isLogin']));
 
   // ==============================================
   const dispatch = useDispatch();
@@ -151,7 +151,12 @@ const Header = () => {
       </Nav>
       <Addition>
         <Button className='writing'>写文章</Button>
-        <Button className='reg'>登陸</Button>
+        {
+          login?
+          <Button className="reg">退出</Button>:
+          <Link to="/login"><Button className="reg">登陸</Button></Link>
+        }
+        {/* <Button className='reg'>登陸</Button> */}
       </Addition>
     </HeaderWrapper>
   );
