@@ -24,5 +24,9 @@ export default {
   },
   getWriterList() {
     return api.get('/writer');
+  },
+  signIn(data) {
+    // console.log(data);
+    return api.post('/auth/signIn', data);
   }
 }
