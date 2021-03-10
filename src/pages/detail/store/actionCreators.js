@@ -9,8 +9,7 @@ const changeDetail = ({title,content}) => ({ //%%括號
 
 export const getDetail = (id) => {
   return ( dispatch ) => {
-    console.log('action',id);
-    api.getArticleDetail()
+    api.getArticleDetail(id)
     .then((res) => {
       const result = res.data.data.detail;
       dispatch(changeDetail(result));

@@ -32,17 +32,11 @@ app.all('*', function (req, res, next) {
   next();
 })
 
-
 app.get('/headerList',(req,res) => {
-  // res.json({
-    //   success: true,
-    //   data: ["高考","区块链","三生三世","崔永元","vue","小程序","茶点微小说","萨沙讲史堂","夜幕下的地安门","擦亮你的眼","理财","毕业","手帐","简书交友","spring","古风","故事","暖寄归人","旅行","连载","教育","简书","生活","投稿","历史","PHP","考研","docker","EOS","微信小程序","PPT","职场","大数据","创业","书评","东凤","饱醉豚","雨落荒原","程序员","爬虫","时间管理","kotlin","数据分析","阴阳合同","设计","红楼梦","父亲节","女人和衣服","swift","高考作文"]
-    // })
     setTimeout(
       function(){
-
         res.json(Mock.mock(headersList))
-      },5000
+      },1000
     )
 })
 
@@ -53,7 +47,7 @@ app.get('/home',(req,res)=>{
 app.get('/topic',(req,res)=>{
   setTimeout(function(){
     res.json(Mock.mock(topic));
-  },3000)
+  },800)
 });
 // app.get('/home/topic',(req,res)=>{
 //   res.json(Mock.mock(home));
@@ -69,20 +63,20 @@ app.get('/article',(req,res) => {
   setTimeout(function(){
     // res.json(Mock.mock(article))
     res.json(Mock.mock(list))
-  },1000)
+  },500)
 })
 
-app.get('/detail',(req,res) => {
+app.get('/details',(req,res) => {
   setTimeout(function(){
-    res.json(Mock.mock(detail));
-  },1000)
+    res.json(detail);
+  },500)
 })
 
 // app.get('/writer',(res) => {// !!!一定要兩個參數
 app.get('/writer',(req, res) => {
   setTimeout(function(){
       res.json((writer));
-  },1700)
+  },900)
 })
 
 app.post('/auth/signIn',(req, res) => {
