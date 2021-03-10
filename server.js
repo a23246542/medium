@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const bodyParser = require('body-parser');
 const Mock = require('mockjs');
 // const proxy = require('http-proxy-middleware')
@@ -10,8 +11,13 @@ const article = require('./src/api/data/article');
 const detail = require('./src/api/data/detail');
 const writer = require('./src/api/data/writer');
 const signIn = require('./src/api/data/signIn');
-
 const port = process.env.PORT || 5000;
+const root = __dirname + './build';
+
+app.use(express.static(root,{ maxAge: 8640000 }))
+app.get(['/home','/detail','/home/detail/'], (req, res) =>{
+  res.sendFile(path.resolve(root,'index.html'));
+});
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
