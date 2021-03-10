@@ -3,13 +3,15 @@ const bodyParser = require('body-parser');
 const Mock = require('mockjs');
 // const proxy = require('http-proxy-middleware')
 const app = express();
-const headersList = require('./data/headerList');
-const home = require('./data/home');
-const topic = require('./data/topic');
-const article = require('./data/article');
-const detail = require('./data/detail');
-const writer = require('./data/writer');
-const signIn = require('./data/signIn');
+const headersList = require('./src/api/data/headerList');
+const home = require('./src/api/data/home');
+const topic = require('./src/api/data/topic');
+const article = require('./src/api/data/article');
+const detail = require('./src/api/data/detail');
+const writer = require('./src/api/data/writer');
+const signIn = require('./src/api/data/signIn');
+
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -85,7 +87,7 @@ app.post('/auth/signIn',(req, res) => {
   }
 })
 
-app.listen(5000,()=>{
+app.listen(port,()=>{
   console.log('监听端口');
 
 });
