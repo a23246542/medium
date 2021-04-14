@@ -1,18 +1,5 @@
 {
- "processors": [["stylelint-processor-styled-components", {
-    "moduleName": "styled-components",
-    "importName": "default",
-    "strict": false,
-    "ignoreFiles": [],
-    "parserPlugins": [
-      "jsx",
-      ["decorators", { "decoratorsBeforeExport": true }],
-      "classProperties",
-      "exportExtensions",
-      "functionBind",
-      "functionSent"
-    ]
-  }]],
+
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-recommended",
@@ -22,14 +9,13 @@
     "stylelint-order"
   ],
   "rules": {
-    "indentation": null,
+    "indentation": 2,
     "max-nesting-depth": null,
     "no-empty-source": null,
     "no-descending-specificity": null,
     "order/properties-alphabetical-order": null,
     "property-no-vendor-prefix": null,
     "selector-max-compound-selectors": null,
-    "scss/at-import-partial-extension-blacklist": null,
     "value-no-vendor-prefix": null
   }
 }
