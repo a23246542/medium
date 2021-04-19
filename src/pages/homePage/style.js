@@ -26,7 +26,7 @@ export const HomeRight = styled.div`
 
 export const TopicWrapper = styled.div`
   overflow: hidden;
-  padding: 20px 0 10px 0;
+  padding: 20px 0 10px;
   margin-left: -18px;
   border-bottom: 1px solid #dcdcdc;
 `;

@@ -1,7 +1,5 @@
 {
-
   "extends": [
-    "stylelint-config-standard",
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
   ],
@@ -9,7 +7,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "indentation": 2,
+    "indentation": null,
     "max-nesting-depth": null,
     "no-empty-source": null,
     "no-descending-specificity": null,
@@ -17,5 +15,9 @@
     "property-no-vendor-prefix": null,
     "selector-max-compound-selectors": null,
     "value-no-vendor-prefix": null
-  }
+  },
+  "ignoreFiles": [
+    "./node_modules/**/*.{css,scss,sass}",
+    "./dist/**/*.{css,scss,sass}"
+  ]
 }

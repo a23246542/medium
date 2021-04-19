@@ -28,8 +28,6 @@
     "styled-components": "^5.2.1",
     "stylelint": "^13.7.2",
     "stylelint-config-recommended": "^3.0.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.1.0",
     "web-vitals": "^0.2.4"
   },
@@ -50,7 +48,11 @@
       "react-app/jest",
       "eslint:recommended",
       "standard-react",
-      "plugin:react-hooks/recommended"
+      "plugin:react-hooks/recommended",
+      "plugin:styled-components-a11y/recommended"
+    ],
+    "plugins": [
+      "styled-components-a11y"
     ],
     "rules": {
       "no-unused-vars": [
@@ -60,6 +62,13 @@
         "warn"
       ]
     }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "editor.formatOnSave": true
   },
   "browserslist": {
     "production": [
@@ -76,6 +85,12 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.13.0",
-    "eslint-plugin-react": "^7.21.5"
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-styled-components-a11y": "0.0.34",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-scss": "^3.19.0"
   }
 }

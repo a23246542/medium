@@ -134,10 +134,11 @@ export const WriterItem = styled.li`
     width: 48px;
     height: 48px;
     margin-right: 10px;
-    img{
+
+    img {
       width: 100%;
       height: 100%;
-      border-radius:50%;
+      border-radius: 50%;
     }
   }
 

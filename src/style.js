@@ -56,8 +56,7 @@ export const ResetStyle = createGlobalStyle`
     }
   }`;
 
-
-  export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 
     #root {
       height: 100%;
@@ -175,14 +174,14 @@ export const ResetStyle = createGlobalStyle`
     }
 
     a {
-        color: #ec7259;
-        text-decoration: none;
-        background-color: transparent;
-        outline: none;
-        cursor: pointer;
-        -webkit-transition: color .3s;
-        transition: color .3s;
-        -webkit-text-decoration-skip: objects
+      color: #ec7259;
+      text-decoration: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      -webkit-transition: color .3s;
+      transition: color .3s;
+      -webkit-text-decoration-skip: objects
     }
 
     a:hover {
@@ -263,4 +262,3 @@ export const ResetStyle = createGlobalStyle`
 }
 
 `;
-

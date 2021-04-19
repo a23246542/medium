@@ -44,16 +44,19 @@ export const NavItem = styled.div`
 	padding: 0 15px;
 	font-size: 17px;
 	color: #333;
+
 	&.left {
-        float:left;
+      float: left;
     }
-    &.right {
-        float:right;
-        color: #969696;
-    }
-    &.active{
-        color:#ea6f5a
-    }
+
+  &.right {
+      float: right;
+      color: #969696;
+  }
+
+  &.active {
+    color: #ea6f5a;
+  }
 `;
 
 // @@js zoom没有block依然能宽高
@@ -61,6 +64,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
 	position: relative;
 	float: left;
+
 	.zoom {
 		position: absolute;
     right: 10px;
@@ -91,9 +95,11 @@ export const NavSearch = styled.input.attrs({
 	background: #eee;
 	font-size: 14px;
 	color: #666;
+
 	&::placeholder {
 		color: #999;
 	}
+
 	&.focused {
 		width: 240px;
     }
@@ -101,13 +107,16 @@ export const NavSearch = styled.input.attrs({
 	&.slide-enter {
 		transition: all .2s ease-out;
 	}
+
 	&.slide-enter-active {
 		width: 240px;
 	}
-	&.slide-exit {
+
+  &.slide-exit {
 		transition: all .2s ease-out;
 	}
-	&.slide-exit-active {
+
+  &.slide-exit-active {
 		width: 160px;
 	}
 `;

@@ -5,5 +5,12 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
+  "[src/**/style.js]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": false
+    },
+  },
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
 }
