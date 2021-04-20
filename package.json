@@ -40,7 +40,7 @@
     "eslintInit": "eslint --init",
     "lint": "eslint src/**/*.{jsx,js}",
     "lint:css": "stylelint src/**/style.js",
-    "mock": "node src/api/server.js"
+    "mock": "node server.js"
   },
   "eslintConfig": {
     "extends": [
