@@ -1,13 +1,9 @@
-import React,{Fragment} from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import store from './store';
-import { ResetStyle,GlobalStyle } from './style';
+import { ResetStyle, GlobalStyle } from './style';
 import { IconFont } from './statics/iconfont/iconfont';
 import './style.js';
 import Header from './common/header';
@@ -18,15 +14,15 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-          <ResetStyle/>
-          <GlobalStyle/>
-          <IconFont/>
-          <Header/>
-          {/* <Redirect from="/" to="/home"/> */}
-          <Route path="/" exact>
-            <Redirect to="/home"/>
-          </Route>
-          <RouterView/>
+        <ResetStyle />
+        <GlobalStyle />
+        <IconFont />
+        <Header />
+        {/* <Redirect from="/" to="/home"/> */}
+        <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route>
+        <RouterView />
       </Router>
     </Provider>
   );

@@ -8,9 +8,10 @@
   "[src/**/style.js]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.stylelint": false
-    },
+    }
   },
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
+  "files.eol": "\n"
 }

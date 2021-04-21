@@ -18,9 +18,3 @@ export const IconFont = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `;
-
-
-
-
-
-

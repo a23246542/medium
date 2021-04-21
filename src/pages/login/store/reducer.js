@@ -3,10 +3,10 @@ import { actionTypes } from './index';
 
 const defaultState = fromJS({
   isLogin: false,
-})
+});
 
-export default ( state = defaultState, action ) => {
-  switch ( action.type ) {
+export default (state = defaultState, action) => {
+  switch (action.type) {
     case actionTypes.LOGIN:
       return state.set('isLogin', true);
     case actionTypes.LOGOUT:
@@ -15,4 +15,4 @@ export default ( state = defaultState, action ) => {
       return state;
   }
   // return state;
-}
+};

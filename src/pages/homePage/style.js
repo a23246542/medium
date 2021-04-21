@@ -6,7 +6,6 @@ export const HomeWrapper = styled.div`
   width: 960px;
 `;
 
-
 export const HomeLeft = styled.div`
   float: left;
   margin-left: 15px;
@@ -83,7 +82,7 @@ export const ListInfo = styled.div`
     font-size: 13px;
     color: #777;
   }
-`
+`;
 
 export const LoadMore = styled.div`
   width: 100%;
@@ -95,7 +94,7 @@ export const LoadMore = styled.div`
   border-radius: 20px;
   color: #fff;
   cursor: pointer;
-`
+`;
 export const BackTop = styled.div`
   position: fixed;
   bottom: 60px;
@@ -111,4 +110,4 @@ export const BackTop = styled.div`
   cursor: pointer;
 
   /* background-color: #ccc; */
-`
+`;
