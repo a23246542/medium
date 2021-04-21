@@ -1,8 +1,12 @@
 import React, { Fragment } from 'react';
 import Article from './components/Article';
 import Topic from './components/Topic';
+import { useRouteMatch } from 'react-router-dom';
 
 const HomePage = () => {
+  const match = useRouteMatch();
+  console.log('homepage', match);
+
   return (
     <>
       <img

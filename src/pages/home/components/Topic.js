@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
 import { actionCreators } from '../store';
 
-const Topic = memo(() => {
+const Topic = () => {
   // const [count,setCount] = useState(0)
   const topicList = useSelector((state) => state.getIn(['home', 'topicList']));
   const dispatch = useDispatch();
@@ -31,6 +31,6 @@ const Topic = memo(() => {
       {/* {count} */}
     </TopicWrapper>
   );
-});
+};
 
-export default Topic;
+export default memo(Topic);
