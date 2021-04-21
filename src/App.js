@@ -19,9 +19,9 @@ function App() {
         <IconFont />
         <Header />
         {/* <Redirect from="/" to="/home"/> */}
-        <Route path="/" exact>
+        {/* <Route path="/" exact>
           <Redirect to="/home" />
-        </Route>
+        </Route> */}
         <RouterView />
       </Router>
     </Provider>

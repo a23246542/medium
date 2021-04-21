@@ -12,7 +12,8 @@ import {
 } from 'react-router-dom';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
-import Detail from '../detail/loadable.js';
+// import Detail from '../detail/loadable.js';
+import Detail from '../detail';
 import PropTypes from 'prop-types';
 import HomePage from '../homePage';
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
@@ -23,7 +24,7 @@ const Home = (props) => {
   );
   const dispatch = useDispatch();
   let { path, url } = useRouteMatch();
-
+  console.log('home layout', path, url);
   useEffect(() => {
     window.addEventListener('scroll', changeScrollTopShow);
     return () => {

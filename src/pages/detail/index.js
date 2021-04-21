@@ -5,9 +5,9 @@ import { DetailWrapper, Header, Content } from './style';
 import { useRouteMatch, useLocation, withRouter } from 'react-router-dom';
 
 const Detail = (props) => {
-  // let match = useRouteMatch();
+  let match = useRouteMatch();
   let { search } = useLocation();
-  // console.log(match);!!
+  console.log('detail', match);
   // console.log(props);!!
   // console.log(search);
   const query = new URLSearchParams(search);
