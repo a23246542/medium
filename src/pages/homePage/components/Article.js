@@ -19,56 +19,26 @@ function usePage() {
   return articlePage;
 }
 
-const Article = () => {
-  const articles = useSelector((state) => state.getIn(['home', 'articleList']));
-  // let articlePage = usePage();// %%要用在最頂層
-  // const articlePage =  useRef(useSelector((state) => state.getIn(['home','articlePage'])));
-  const articlePage = useSelector((state) =>
-    state.getIn(['home', 'articlePage'])
-  );
-  // const articlePage = useMemo(useSelector((state) => state.getIn(['home','articlePage'])),[])
-
-  const dispatch = useDispatch();
-  console.log('Article render');
-
-  useEffect(() => {
-    dispatch(actionCreators.getArticleList());
-  }, []);
-
-  const getMoreList = (articlePage) => {
-    dispatch(actionCreators.getMoreList(articlePage));
-    // articlePage = usePage();%%不能這邊用
-    console.log('articlePage', articlePage);
-  };
-
+const Article = ({ articles, articlePage, handleClickMore }) => {
   return (
-    // <Switch>
-    //   <Route
-    //     path={props.match.url}
-    //     render={(props) => {
-    //       if (props.location.pathname === '/home') {
-    //         return
-    //       }
-    //     }}
-    //   />
-    // </Switch>
     <div>
-      {articles.map((item) => {
-        return (
-          <Link to={`/home/detail?id=${item.get('id')}`} key={item.get('id')}>
-            <ListItem>
-              {/* // <ListItem key={index}> */}
-              <img className="pic" src={item.get('imgUrl')} alt="" />
-              <ListInfo>
-                <h3 className="title">{item.get('title')}</h3>
-                <p className="desc">{item.get('desc')}</p>
-              </ListInfo>
-            </ListItem>
-            {/* // <LoadMore onClick={}>加載更多</LoadMore> %% */}
-          </Link>
-        );
-      })}
-      <LoadMore onClick={() => getMoreList(articlePage)}>更多文章</LoadMore>
+      {articles.size > 0 &&
+        articles.map((item) => {
+          return (
+            <Link to={`/home/detail?id=${item.get('id')}`} key={item.get('id')}>
+              <ListItem>
+                {/* // <ListItem key={index}> */}
+                <img className="pic" src={item.get('imgUrl')} alt="" />
+                <ListInfo>
+                  <h3 className="title">{item.get('title')}</h3>
+                  <p className="desc">{item.get('desc')}</p>
+                </ListInfo>
+              </ListItem>
+              {/* // <LoadMore onClick={}>加載更多</LoadMore> %% */}
+            </Link>
+          );
+        })}
+      <LoadMore onClick={() => handleClickMore(articlePage)}>更多文章</LoadMore>
     </div>
   );
 };

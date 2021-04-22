@@ -65,7 +65,7 @@
         }
       ],
       "no-unused-vars": [
-        "warn"
+        "off"
       ],
       "react/prop-types": [
         "warn"

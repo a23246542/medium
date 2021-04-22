@@ -24,7 +24,7 @@ const RouterView = () => {
       {/* <Route path="/home" render={() => <Home />} /> */}
       <Route path="/home" render={(props) => LayoutRouter(props)} />
       <Route path="/login" render={() => <Login />} />
-      <Route exact path="/">
+      <Route path="/">
         <Redirect to="/home" />
       </Route>
     </Switch>

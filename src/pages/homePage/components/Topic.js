@@ -3,22 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TopicWrapper, TopicItem } from '../style';
 import { actionCreators } from '../store';
 
-const Topic = () => {
-  // const [count,setCount] = useState(0)
-  const topicList = useSelector((state) => state.getIn(['home', 'topicList']));
-  const dispatch = useDispatch();
-  console.log('Topic render');
-  useEffect(() => {
-    // fetchData().then(()=>{
-    dispatch(actionCreators.getTopicList()).then(() => {
-      // setCount(1);
-    });
-  }, []);
-
-  // async function fetchData () {
-  //   await dispatch(actionCreators.getTopicList())
-  // }
-
+const Topic = ({ topicList }) => {
   return (
     <TopicWrapper>
       {topicList.size > 0 &&

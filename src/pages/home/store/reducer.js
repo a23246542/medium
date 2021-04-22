@@ -10,7 +10,7 @@ const defaultState = fromJS({
   writerList: [],
 });
 //純函數
-export default (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
   // const { type , payload } = action;
 
   switch (action.type) {
@@ -48,3 +48,4 @@ export default (state = defaultState, action) => {
   }
   // return state;
 };
+export default reducer;

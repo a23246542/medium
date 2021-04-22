@@ -1,6 +1,5 @@
 import * as actionTypes from './actionTypes';
 import { fromJS, List } from 'immutable';
-import axios from 'axios';
 import api from '../../../api';
 
 const changeTopicList = (data) => ({
@@ -53,9 +52,7 @@ export const getMoreList = (page) => {
   return (dispatch) => {
     dispatch(changeArticlePage(page + 1));
     api.getArticleList(page + 1).then((res) => {
-      // const result = res.data.data;%%印出來才發現是物件
       const result = res.data.data.articleList;
-      // dispatch(addArticleList(res.data.data, page + 1 ))
       dispatch(addArticleList(result));
     });
   };
