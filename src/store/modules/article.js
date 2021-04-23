@@ -1,21 +1,32 @@
 import { fromJS, update } from 'immutable';
 import api from '../../api';
 
+const initialState = fromJS({
+  articleList: [],
+  articlePage: 1,
+  isLoading: false,
+  error: '',
+});
+
 const actionTypes = {
   FETCH_ARTICLE_LIST: 'ARTICLE/FETCH_ARTICLE_LIST',
+  FETCH_ARTICLE_LIST_SUCCESS: 'ARTICLE/FETCH_ARTICLE_LIST_SUCCESS',
+  FETCH_ARTICLE_LIST_FAIL: 'ARTICLE/FETCH_ARTICLE_LIST_FAIL',
+  FETCH_ARTICLE_LIST_REQUESTED: 'ARTICLE/FETCH_ARTICLE_LIST_FAIL_REQUESTED',
   SET_ARTICLE_PAGE: 'ARTICLE/SET_ARTICLE_PAGE',
   ADD_ARTICLE_LIST: 'ARTICLE/ADD_ARTICLE_LIST',
 };
 
-const initialState = fromJS({
-  articleList: [],
-  articlePage: 1,
-});
-
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_ARTICLE_LIST:
+      return state.set('isLoading', true);
+    case actionTypes.FETCH_ARTICLE_LIST_SUCCESS:
       return state.set('articleList', action.articleList);
+    case actionTypes.FETCH_ARTICLE_LIST_FAIL:
+      return state.set('articleList', action.error);
+    case actionTypes.FETCH_ARTICLE_LIST_REQUESTED:
+      return state.set('isLoading', false);
     case actionTypes.SET_ARTICLE_PAGE:
       return state.set('articlePage', action.nextPage);
     case actionTypes.ADD_ARTICLE_LIST:
@@ -29,9 +40,22 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const fetchArticleList = (data) => ({
+const fetchArticleList = () => ({
   type: actionTypes.FETCH_ARTICLE_LIST,
-  articleList: fromJS(data),
+});
+
+const fetchArticleListSuccess = (articleAry) => ({
+  type: actionTypes.FETCH_ARTICLE_LIST_SUCCESS,
+  articleList: fromJS(articleAry),
+});
+
+const fetchArticleListFail = (error) => ({
+  type: actionTypes.FETCH_ARTICLE_LIST_FAIL,
+  error,
+});
+
+const fetchArticleListRequested = () => ({
+  type: actionTypes.FETCH_ARTICLE_LIST_REQUESTED,
 });
 
 const updateArticlePage = (nextPage) => ({
@@ -53,10 +77,19 @@ export const actions = {
   // }),
   loadArticleList: () => {
     return async (dispatch) => {
-      await api.getArticleList().then((res) => {
-        const result = res.data.data.articleList;
-        dispatch(fetchArticleList(result));
-      });
+      dispatch(fetchArticleList());
+      await api
+        .getArticleList()
+        .then((res) => {
+          const result = res.data.data.articleList;
+          dispatch(fetchArticleListSuccess(result));
+        })
+        .catch((err) => {
+          dispatch(fetchArticleListFail(err));
+        })
+        .finally(() => {
+          dispatch(fetchArticleListRequested());
+        });
     };
   },
   loadMoreArticle: (page) => {

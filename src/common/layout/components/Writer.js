@@ -4,26 +4,26 @@ import { WriterWrapper, WriterList, WriterItem } from '../style';
 import * as actionCreators from '../store/actionCreators';
 import { actions as writerActions } from '../../../store/modules/writer';
 
-const Writer = () => {
-  const writerList = useSelector((state) =>
-    // state.getIn(['home', 'writerList'])
-    state.getIn(['writer', 'writerList'])
-  );
-  const dispatch = useDispatch();
+const Writer = ({ writerList }) => {
+  // const writerList = useSelector((state) =>
+  //   // state.getIn(['home', 'writerList'])
+  //   state.getIn(['writer', 'writerList'])
+  // );
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    getWriter().then(() => {
-      console.log('writerList', writerList);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getWriter().then(() => {
+  //     console.log('writerList', writerList);
+  //   });
+  // }, []);
 
   // console.log(writerList);
   // console.log('writer render');
 
-  const getWriter = async () => {
-    // await dispatch(actionCreators.getWriters());
-    await dispatch(writerActions.loadWriters());
-  };
+  // const getWriter = async () => {
+  //   // await dispatch(actionCreators.getWriters());
+  //   await dispatch(writerActions.loadWriters());
+  // };
 
   return (
     <WriterWrapper>

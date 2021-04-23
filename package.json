@@ -55,20 +55,13 @@
     ],
     "rules": {
       "prettier/prettier": [
-        "error",
-        {
-          "trailingComma": "es5",
-          "tabWidth": 2,
-          "semi": true,
-          "singleQuote": true,
-          "endOfLine": "lf"
-        }
+        "error"
       ],
       "no-unused-vars": [
         "off"
       ],
       "react/prop-types": [
-        "warn"
+        "off"
       ]
     }
   },
