@@ -21,67 +21,99 @@ import {
   Addition,
   Button,
 } from './style';
+import { actions as hotSearchActions } from '../../store/modules/hotSearch';
+import { actions as headerActions } from '../../store/header';
 
 const Header = () => {
-  // const [focused,setFocused] = useState(false);
+  // const [focused, setFocused] = useState(false);
+  // const [mouseIn, setMouseIn] = useState(false);
   // const focused = useSelector((state) => state.header.focused);
   // const focused = useSelector((state) => state.header.get('focused'));
   const focused = useSelector((state) => state.getIn(['header', 'focused']));
   const mouseIn = useSelector((state) => state.getIn(['header', 'mouseIn']));
-  const list = useSelector((state) => state.getIn(['header', 'list']));
-  const thisPage = useSelector((state) => state.getIn(['header', 'thisPage']));
+
+  // const list = useSelector((state) => state.getIn(['header', 'list']));
+  // const thisPage = useSelector((state) => state.getIn(['header', 'thisPage']));
+  // const totalPages = useSelector((state) =>
+  //   state.getIn(['header', 'totalPages'])
+  // );
+  // const list = useSelector((state) => state.getIn(['header', 'list']));
+  // const thisPage = useSelector((state) => state.getIn(['header', 'thisPage']));
+  // const totalPages = useSelector((state) =>
+  //   state.getIn(['header', 'totalPages'])
+  // );
+  const hotSearchList = useSelector((state) =>
+    state.getIn(['hotSearch', 'hotSearchList'])
+  );
   const totalPages = useSelector((state) =>
+    // state.getIn(['hotSearch', 'totalPages'])
     state.getIn(['header', 'totalPages'])
   );
+  const currentPage = useSelector((state) =>
+    // state.getIn(['hotSearch', 'currentPage'])
+    state.getIn(['header', 'currentPage'])
+  );
+
   const login = useSelector((state) => state.getIn(['login', 'isLogin']));
 
   // ==============================================
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () =>
-      await dispatch(actionCreators.getHotSearchList(list));
-    fetchData();
+    loadHotSearchList();
   }, []);
 
+  const loadHotSearchList = async () => {
+    // await dispatch(hotSearchActions.loadHotSearchList());
+    await dispatch(headerActions.loadHotSearchList());
+  };
   // @@為何這邊也要async await
-  const handleInputFocus = async (list) => {
+  const handleInputFocus = async () => {
     // setFocused(true);
-    list.size === 0 && (await dispatch(actionCreators.getHotSearchList(list)));
-    dispatch(actionCreators.searchFocus());
+    // list.size === 0 && (await dispatch(actionCreators.getHotSearchList(list)));
+    // setFocused(true);
+    headerActions.size === 0 &&
+      (await dispatch(headerActions.loadHotSearchList()));
+    dispatch(headerActions.setSearchFocus());
   };
   const handleInputBlur = () => {
+    dispatch(headerActions.setSearchBlur());
     // setFocused(false);
-    dispatch(actionCreators.searchBlur());
   };
 
   const handleMouseEnter = () => {
-    // dispatch(actionCreators.mouseIn(true))
-    dispatch(actionCreators.mouseEnter());
+    // dispatch(headerActions.mouseIn(true));
+    dispatch(headerActions.setMouseEnter());
+    // dispatch(actionCreators.mouseEnter());
+    // setMouseIn(true);
   };
 
   const handleMouseLeave = () => {
-    // dispatch(actionCreators.mouseIn(false))
-    dispatch(actionCreators.mouseLeave());
+    // dispatch(headerActions.mouseIn(false));
+    dispatch(headerActions.setMouseLeave());
+    // dispatch(actionCreators.mouseLeave());
+    // setMouseIn(false);
   };
 
   const handlePageChange = () => {
     // %%放在getListArea後面好像會找不到
     // if (thisPage!==totalPages){
-    if (thisPage < totalPages) {
-      dispatch(actionCreators.changePage(thisPage + 1));
+    if (currentPage < totalPages) {
+      dispatch(headerActions.setCurrentPage(currentPage + 1));
     } else {
-      dispatch(actionCreators.changePage(1));
+      dispatch(headerActions.setCurrentPage(1));
     }
   };
 
   const getListArea = () => {
     //渲染狀態focused mouseIn list
-    const JsList = list.toJS(); // %%不可更改 list.toJs is not a function
+    //eslint-disabled-next-line
+    // if ('aa') return; // eslint-disable-line
+    const JsList = hotSearchList.toJS(); // %%不可更改 list.toJs is not a function
     const pageList = [];
 
     if (JsList.length) {
-      for (let i = (thisPage - 1) * 10; i < thisPage * 10; i++) {
+      for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
         // 第一頁0~小於10 第二頁10~小於20
         pageList.push(
           <SearchInfoItem key={JsList[i]}>{JsList[i]}</SearchInfoItem> //JsList才能[i]
@@ -139,7 +171,7 @@ const Header = () => {
             <NavSearch
               className={focused ? 'focused' : ''}
               onFocus={() => {
-                handleInputFocus(list);
+                handleInputFocus();
               }}
               onBlur={handleInputBlur}
             ></NavSearch>
