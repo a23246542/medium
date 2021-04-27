@@ -71,3 +71,9 @@ export const Button = styled.button`
     outline: none;
   }
 `;
+
+export const ErrMsg = styled.div`
+  margin-bottom: 10px;
+  color: red;
+  letter-spacing: 1px;
+`;

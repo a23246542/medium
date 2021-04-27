@@ -82,6 +82,14 @@ app.post('/auth/signIn', (req, res) => {
   const { account, password } = req.body;
   if (account === 'admin' && password === 'admin') {
     res.json(signIn);
+  } else {
+    res.json({
+      success: false,
+      data: {
+        success: false,
+        message: '帳號跟密碼為admin',
+      },
+    });
   }
 });
 

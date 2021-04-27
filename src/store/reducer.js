@@ -4,7 +4,8 @@ import { reducer as homeReducer } from '../pages/home/store';
 // import { reducer as detailReducer } from '../pages/detail/store';
 import { reducer as detailReducer } from './detail';
 import { reducer as headerReducer } from './header';
-import { reducer as loginReducer } from '../pages/login/store';
+// import { reducer as loginReducer } from '../pages/login/store';
+import { reducer as loginReducer } from './login';
 import {
   writerReducer,
   topicReducer,
