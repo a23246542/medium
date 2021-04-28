@@ -4,8 +4,8 @@ import Home from '../pages/home';
 import Login from '../pages/login';
 import Layout from '../common/layout';
 import HomePage from '../pages/homePage';
-// import Detail from '../pages/detail/loadable';
-import Detail from '../pages/detail';
+import Detail from '../pages/detail/loadable';
+// import Detail from '../pages/detail';
 
 const RouterView = () => {
   // const { path } = useRouteMatch(); // path會只有/
