@@ -18,10 +18,6 @@ function App() {
         <GlobalStyle />
         <IconFont />
         <Header />
-        {/* <Redirect from="/" to="/home"/> */}
-        {/* <Route path="/" exact>
-          <Redirect to="/home" />
-        </Route> */}
         <RouterView />
       </Router>
     </Provider>

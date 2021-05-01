@@ -4,16 +4,21 @@ const textLight = '#969696';
 const aColor = '#333';
 
 export const Wrapper = styled.div`
-  overflow: hidden;
-  width: 960px;
+  width: 1000px;
   margin: 0 auto;
+  padding-top: 30px;
+  /* overflow: hidden; */
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 `;
 
 export const Main = styled.main`
   float: left;
-  margin-left: 15px;
-  padding-top: 30px;
-  width: 625px;
+  /* padding-top: 30px; */
+  width: 700px;
 
   .banner-img {
     width: 100%;
@@ -22,18 +27,21 @@ export const Main = styled.main`
 `;
 
 export const Aside = styled.div`
-  width: 280px;
+  position: sticky;
+  top: 56px;
+  width: calc(100% - 700px);
+  float: left;
+  padding-left: 35px;
   box-sizing: border-box;
-  float: right;
 `;
 
 export const RecommendWrapper = styled.div`
-  margin: 40px 0;
-  width: 280px;
+  width: 100%;
+  margin-bottom: 40px;
 `;
 
 export const RecommendItem = styled.div`
-  width: 280px;
+  width: 100%;
   height: 50px;
   border-radius: 15px;
   margin-bottom: 10px;
@@ -43,7 +51,7 @@ export const RecommendItem = styled.div`
 `;
 
 export const WriterWrapper = styled.div`
-  width: 278px;
+  width: 100%;
   min-height: 300px;
   /* border: 1px solid #dcdcdc; */
   border-radius: 3px;

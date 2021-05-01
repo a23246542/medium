@@ -7,20 +7,38 @@ import logoPic from '../../statics/logo.png';
 
 const border = 'border:1px solid #ccc';
 
-export const HeaderWrapper = styled.div`
-  z-index: 1;
-  position: relative;
-  height: 56px;
+export const HeaderWrapper = styled.header`
+  width: 100%;
+`;
+
+export const HeaderFixed = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: #fff;
   border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 5%);
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  min-width: 1000px;
+  max-width: 1440px;
+  height: 56px;
+  margin: 0 auto;
+`;
+
+export const HeaderHigh = styled.div`
+  display: block;
+  height: 56px;
 `;
 
 // export const Logo = styled.a.attrs({
 //   href:'/'
 // })`
 export const Logo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   display: block;
   width: 100px;
   height: 56px;
@@ -32,10 +50,8 @@ export const Nav = styled.div`
   position: relative;
   width: 960px;
   height: 100%;
-  padding-right: 70px;
-  box-sizing: border-box;
   margin: 0 auto;
-  ${border};
+  /* ${border}; */
 `;
 
 export const NavItem = styled.div`
@@ -162,26 +178,29 @@ export const SearchInfoItem = styled.a`
 `;
 
 export const Addition = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
   height: 56px;
+  display: flex;
+  align-items: center;
 `;
 
 export const Button = styled.div`
-  float: right; /*!!css 不一定要flex 不加换div占满宽*/
-  margin-top: 9px;
+  /* float: right; !!css 不一定要flex 不加换div占满宽 */
+  /* margin-top: 9px; */
   margin-right: 20px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
+  height: 38px;
   line-height: 38px;
+  text-align: center;
   border-radius: 19px;
   border: 1px solid #ec6149;
   font-size: 14px;
   cursor: pointer;
   &.reg {
+    width: 70px;
     color: #ec6149;
   }
   &.writing {
+    width: 84px;
     color: #fff;
     background: #ec6149;
   }

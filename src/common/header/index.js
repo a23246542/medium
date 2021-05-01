@@ -12,6 +12,9 @@ import {
   Nav,
   NavItem,
   SearchWrapper,
+  HeaderContainer,
+  HeaderFixed,
+  HeaderHigh,
   NavSearch,
   SearchInfo,
   SearchInfoTitle,
@@ -156,47 +159,54 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <Link to="/">
-        <Logo />
-      </Link>
-      <Nav>
-        <NavItem className="left">首页</NavItem>
-        <NavItem className="left">下载APP</NavItem>
-        <NavItem className="right">
-          <i className="iconfont">&#xe636;</i>
-        </NavItem>
-        <SearchWrapper>
-          {/* @@CSSTransition只能包一个如何影响到zoom */}
-          <CSSTransition in={focused} timeout={200} classNames="slide">
-            <NavSearch
-              className={focused ? 'focused' : ''}
-              onFocus={() => {
-                handleInputFocus();
-              }}
-              onBlur={handleInputBlur}
-            ></NavSearch>
-          </CSSTransition>
-          {/* <i className="iconfont"
-                className={focused ? 'focused' :''} */}
-          <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>
-            &#xe614;
-          </i>
-          {getListArea()}
-        </SearchWrapper>
-      </Nav>
-      <Addition>
-        <Button className="writing">写文章</Button>
-        {login ? (
-          <Button className="reg" onClick={logout}>
-            退出
-          </Button>
-        ) : (
-          <Link to="/login">
-            <Button className="reg">登陸</Button>
+      <HeaderFixed>
+        <HeaderContainer>
+          <Link to="/">
+            <Logo />
           </Link>
-        )}
-        {/* <Button className='reg'>登陸</Button> */}
-      </Addition>
+          <Nav>
+            <NavItem className="left">首頁</NavItem>
+            <NavItem className="left">下載APP</NavItem>
+            <NavItem className="right">
+              <i className="iconfont">&#xe636;</i>
+            </NavItem>
+            <SearchWrapper>
+              {/* @@CSSTransition只能包一个如何影响到zoom */}
+              <CSSTransition in={focused} timeout={200} classNames="slide">
+                <NavSearch
+                  className={focused ? 'focused' : ''}
+                  onFocus={() => {
+                    handleInputFocus();
+                  }}
+                  onBlur={handleInputBlur}
+                ></NavSearch>
+              </CSSTransition>
+              {/* <i className="iconfont"
+                className={focused ? 'focused' :''} */}
+              <i
+                className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}
+              >
+                &#xe614;
+              </i>
+              {getListArea()}
+            </SearchWrapper>
+          </Nav>
+          <Addition>
+            <Button className="writing">寫文章</Button>
+            {login ? (
+              <Button className="reg" onClick={logout}>
+                退出
+              </Button>
+            ) : (
+              <Link to="/login">
+                <Button className="reg">登入</Button>
+              </Link>
+            )}
+            {/* <Button className='reg'>登陸</Button> */}
+          </Addition>
+        </HeaderContainer>
+      </HeaderFixed>
+      <HeaderHigh />
     </HeaderWrapper>
   );
 };
