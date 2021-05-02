@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import Home from '../pages/home';
 import Login from '../pages/login';
 import Layout from '../common/layout';
 import HomePage from '../pages/homePage';
-import Detail from '../pages/detail/loadable';
+import Detail from '../pages/detail';
 // import Detail from '../pages/detail';
+// import Detail from '../pages/detail';
+
+const LazyDetailPage = lazy(() => import('../pages/detail'));
 
 const RouterView = () => {
   // const { path } = useRouteMatch(); // path會只有/
@@ -14,20 +17,22 @@ const RouterView = () => {
       <Switch>
         {/* <Route exact path="" render={() => <HomePage />} /> */}
         <Route exact path={path} render={() => <HomePage />} />
-        <Route path={`${path}/detail`} render={() => <Detail />} />
+        <Route path={`${path}/detail`} render={() => <LazyDetailPage />} />
       </Switch>
     </Layout>
   );
 
   return (
-    <Switch>
-      {/* <Route path="/home" render={() => <Home />} /> */}
-      <Route path="/home" render={(props) => LayoutRouter(props)} />
-      <Route path="/login" render={() => <Login />} />
-      <Route path="/">
-        <Redirect to="/home" />
-      </Route>
-    </Switch>
+    <Suspense fallback={<div>正在加載</div>}>
+      <Switch>
+        {/* <Route path="/home" render={() => <Home />} /> */}
+        <Route path="/home" render={(props) => LayoutRouter(props)} />
+        <Route path="/login" render={() => <Login />} />
+        <Route path="/">
+          <Redirect to="/home" />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 };
 
