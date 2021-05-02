@@ -6,6 +6,7 @@ import { reducer as detailReducer } from './detail';
 import { reducer as headerReducer } from './header';
 // import { reducer as loginReducer } from '../pages/login/store';
 import { reducer as loginReducer } from './login';
+import { reducer as appReducer } from './app';
 import {
   writerReducer,
   topicReducer,
@@ -14,6 +15,7 @@ import {
 } from './modules';
 const reducer = combineReducers({
   // header: headerReducer,
+  app: appReducer,
   home: homeReducer,
   detail: detailReducer,
   login: loginReducer,
