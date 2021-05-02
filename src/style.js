@@ -175,7 +175,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       color: #ec7259;
-      text-decoration: none;
+      text-decoration: none !important;
       background-color: transparent;
       outline: none;
       cursor: pointer;

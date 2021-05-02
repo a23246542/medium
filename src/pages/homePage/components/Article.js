@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useMemo } from 'react';
+import React, { memo, useRef, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { actionCreators } from '../store';
 import { ListItem, ListInfo, LoadMore } from '../style';
 import {
@@ -9,6 +10,7 @@ import {
   useRouteMatch,
   withRouter,
 } from 'react-router-dom';
+import '../style';
 
 // const usePage = () => {
 function usePage() {
@@ -20,26 +22,46 @@ function usePage() {
 }
 
 const Article = ({ articles, articlePage, handleClickMore }) => {
+  const fixCSSTransitionNode = useRef(null);
   return (
-    <div>
-      {articles.size > 0 &&
-        articles.map((item) => {
-          return (
-            <Link to={`/home/detail?id=${item.get('id')}`} key={item.get('id')}>
-              <ListItem>
-                {/* // <ListItem key={index}> */}
-                <img className="pic" src={item.get('imgUrl')} alt="" />
-                <ListInfo>
-                  <h3 className="title">{item.get('title')}</h3>
-                  <p className="desc">{item.get('desc')}</p>
-                </ListInfo>
-              </ListItem>
-              {/* // <LoadMore onClick={}>加載更多</LoadMore> %% */}
-            </Link>
-          );
-        })}
-      <LoadMore onClick={() => handleClickMore(articlePage)}>更多文章</LoadMore>
-    </div>
+    <section>
+      <TransitionGroup component="ul" appear>
+        {articles.size > 0 &&
+          articles.map((item, index) => {
+            return (
+              <CSSTransition
+                key={item.get('id')}
+                classNames="fade"
+                timeout={300}
+                unmountOnExit
+                // onEntered={(el) => (el.style.color = 'blue')}
+                // nodeRef={fixCSSTransitionNode}
+              >
+                <ListItem
+                  key={item.get('id')}
+                  style={{
+                    transitionDelay: `${index * 0.3}s`,
+                  }}
+                >
+                  <img className="pic" src={item.get('imgUrl')} alt="" />
+                  <ListInfo>
+                    <Link
+                      to={`/home/detail?id=${item.get('id')}`}
+                      className="title"
+                    >
+                      <h3>{item.get('title')}</h3>
+                    </Link>
+                    <p className="desc">{item.get('desc')}</p>
+                  </ListInfo>
+                </ListItem>
+              </CSSTransition>
+            );
+          })}
+        <LoadMore onClick={() => handleClickMore(articlePage)}>
+          更多文章
+        </LoadMore>
+      </TransitionGroup>
+    </section>
   );
 };
 

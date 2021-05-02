@@ -52,7 +52,7 @@ export const TopicItem = styled.div`
   }
 `;
 
-export const ListItem = styled.div`
+export const ListItem = styled.li`
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #dcdcdc;
@@ -63,6 +63,21 @@ export const ListItem = styled.div`
     height: 100px;
     float: right;
     border-radius: 10px;
+  }
+
+  &.fade-enter,
+  &.fade-appear {
+    opacity: 0;
+  }
+
+  &.fade-enter-active,
+  &.fade-appear-active {
+    opacity: 1;
+    transition: opacity 0.4s ease-in;
+  }
+
+  &.fade-enter-done {
+    opacity: 1;
   }
 `;
 
@@ -75,6 +90,10 @@ export const ListInfo = styled.div`
     line-height: 1.5;
     font-weight: bold;
     color: #333;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .desc {
@@ -94,20 +113,4 @@ export const LoadMore = styled.div`
   border-radius: 20px;
   color: #fff;
   cursor: pointer;
-`;
-export const BackTop = styled.div`
-  position: fixed;
-  bottom: 60px;
-  right: 60px;
-  z-index: 100;
-  width: 70px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-
-  /* background-color: #ccc; */
 `;
