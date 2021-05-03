@@ -13,6 +13,10 @@ const Detail = () => {
   const content = useSelector((state) => state.getIn(['detail', 'content']));
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant',
+    });
     loadArticleDetail();
   }, []);
 
