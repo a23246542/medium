@@ -41,7 +41,6 @@ const Layout = ({ children }) => {
   };
 
   const changeScrollTopShow = () => {
-    console.log(document.documentElement.scrollTop);
     if (document.documentElement.scrollTop > 500) {
       dispatch(appActions.toggleTopShow(true));
     } else {

@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import { RecommendWrapper, RecommendItem } from '../style';
-import boardImg1 from '../../../assets/recommend/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png';
-import boardImg2 from '../../../assets/recommend/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png';
-import boardImg3 from '../../../assets/recommend/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png';
-import boardImg4 from '../../../assets/recommend/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png';
+import boardImg1 from '../../../assets/recommend/recommend-member.png';
+import boardImg2 from '../../../assets/recommend/recommend-column.png';
+import boardImg3 from '../../../assets/recommend/recommend-publishing.png';
+import boardImg4 from '../../../assets/recommend/recommend-serialization.png';
 
 const Recommend = () => {
   console.log('Recommend render');

@@ -94,5 +94,5 @@ app.post('/auth/signIn', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('监听端口');
+  console.log('監聽端口');
 });

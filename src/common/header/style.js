@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
-import logoPic from '../../statics/logo.png';
+// import logoPic from '../../statics/logo.png';
+import logoPic from '../../assets/statics/logo.svg';
 
 //padding-right70px可以推擠float
 // NavSearch如何擺放在中間
@@ -38,12 +39,13 @@ export const HeaderHigh = styled.div`
 // export const Logo = styled.a.attrs({
 //   href:'/'
 // })`
-export const Logo = styled.div`
+export const Logo = styled.img.attrs((props) => ({
+  src: props.src || `${logoPic}`,
+}))`
   display: block;
-  width: 100px;
-  height: 56px;
-  background: url(${logoPic});
-  background-size: contain;
+  width: 52px;
+  height: auto;
+  margin-top: 15px;
 `;
 
 export const Nav = styled.div`

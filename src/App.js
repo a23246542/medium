@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import smoothscroll from 'smoothscroll-polyfill';
 import store from './store';
 import { ResetStyle, GlobalStyle } from './style';
-import { IconFont } from './statics/iconfont/iconfont';
+import { IconFont } from './assets/statics/iconfont/iconfont';
 import './style.js';
 import Header from './common/header';
 import RouterView from './route';

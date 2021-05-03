@@ -15,28 +15,34 @@ module.exports = {
           '//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
       },
       {
-        id: 3,
-        title: '日記本',
-        imgUrl:
-          '//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
-      },
-      {
         id: 4,
         title: '連載文學',
         imgUrl:
           '//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
       },
       {
-        id: 5,
-        title: '說到愛',
+        id: 8,
+        title: '議題賞析',
         imgUrl:
-          '//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
+          '//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
       },
       {
         id: 6,
         title: '雜談閒趣',
         imgUrl:
           '//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
+      },
+      {
+        id: 3,
+        title: '日記本',
+        imgUrl:
+          '//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
+      },
+      {
+        id: 5,
+        title: '說到愛',
+        imgUrl:
+          '//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64',
       },
       {
         id: 7,

@@ -8,9 +8,9 @@ export const DetailWrapper = styled.div`
 `;
 
 export const Header = styled.div`
-  margin: 50px 0;
+  margin: 15px 0 40px;
   line-height: 44px;
-  font-size: 34px;
+  font-size: 30px;
   color: #333;
   font-weight: bold;
 `;
