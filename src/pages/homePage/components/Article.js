@@ -1,8 +1,8 @@
-import React, { memo, useRef, useEffect, useMemo } from 'react';
+import React, { memo, useRef, useEffect, useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { actionCreators } from '../store';
-import { ListItem, ListInfo, LoadMore } from '../style';
+import { ListItem, ListInfo, LoadMore, NoMoreTxt } from '../style';
 import {
   Link,
   Route,
@@ -23,11 +23,44 @@ function usePage() {
 
 const Article = ({ articles, articlePage, handleClickMore }) => {
   const fixCSSTransitionNode = useRef(null);
+  const [isNoMoreArticle, setIsNoMoreArticle] = useState(false);
+  let previousArticleLen = useRef(0);
+  let previousArticlePage = useRef(0);
+  const isLoading = useSelector((state) =>
+    state.getIn(['article', 'isLoading'])
+  );
+  const isFetching = useSelector((state) =>
+    state.getIn(['article', 'isFetching'])
+  );
+  useEffect(() => {
+    console.log(isLoading);
+    console.log('len', previousArticleLen.current, articles.size);
+    console.log('page', previousArticlePage.current, articlePage);
+    console.log(
+      '結果',
+      previousArticleLen.current === articles.size,
+      previousArticlePage !== articlePage
+    );
+    // if (isLoading) return;
+
+    if (
+      previousArticleLen.current === articles.size &&
+      previousArticlePage !== articlePage &&
+      isFetching &&
+      !isLoading
+    ) {
+      setIsNoMoreArticle(true);
+    } else {
+      previousArticleLen.current = articles.size;
+      previousArticlePage.current = articlePage;
+    }
+  }, [articles.size, articlePage, isLoading, isFetching]);
   return (
     <section>
       <TransitionGroup component="ul" appear>
         {articles.size > 0 &&
           articles.map((item, index) => {
+            const delaySeconds = (index % 5) * 0.3;
             return (
               <CSSTransition
                 key={item.get('id')}
@@ -40,7 +73,7 @@ const Article = ({ articles, articlePage, handleClickMore }) => {
                 <ListItem
                   key={item.get('id')}
                   style={{
-                    transitionDelay: `${index * 0.3}s`,
+                    transitionDelay: `${delaySeconds}s`,
                   }}
                 >
                   <img className="pic" src={item.get('imgUrl')} alt="" />
@@ -57,9 +90,13 @@ const Article = ({ articles, articlePage, handleClickMore }) => {
               </CSSTransition>
             );
           })}
-        <LoadMore onClick={() => handleClickMore(articlePage)}>
-          更多文章
-        </LoadMore>
+        {isNoMoreArticle ? (
+          <NoMoreTxt>已經到底部，沒有更多內容囉。</NoMoreTxt>
+        ) : (
+          <LoadMore onClick={() => handleClickMore(articlePage)}>
+            更多文章
+          </LoadMore>
+        )}
       </TransitionGroup>
     </section>
   );

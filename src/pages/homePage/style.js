@@ -114,3 +114,9 @@ export const LoadMore = styled.div`
   color: #fff;
   cursor: pointer;
 `;
+
+export const NoMoreTxt = styled.p`
+  margin: 30px 110px 50px 0;
+  text-align: center;
+  font-size: 15px;
+`;
