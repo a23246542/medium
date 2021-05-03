@@ -6,7 +6,7 @@ const initialState = fromJS({
   articlePage: 1,
   isLoading: false,
   error: '',
-  isFetching: false,
+  hasFetching: false,
 });
 
 const actionTypes = {
@@ -30,13 +30,16 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ARTICLE_LIST_REQUESTED:
       return state.set('isLoading', false);
     case actionTypes.SET_ARTICLE_PAGE:
-      return state.set('articlePage', action.nextPage).set('isLoading', true);
+      return state.merge({
+        articlePage: action.nextPage,
+        isLoading: true,
+      });
     case actionTypes.ADD_ARTICLE_LIST:
-      // return state.get('articleList').concat(action.moreArticle);
-      return state
-        .set('articleList', state.get('articleList').concat(action.moreArticle))
-        .set('isFetching', true)
-        .set('isLoading', false);
+      return state.merge({
+        articleList: state.get('articleList').concat(action.moreArticle),
+        hasFetching: true,
+        isLoading: false,
+      });
     default:
       return state;
   }

@@ -24,37 +24,26 @@ function usePage() {
 const Article = ({ articles, articlePage, handleClickMore }) => {
   const fixCSSTransitionNode = useRef(null);
   const [isNoMoreArticle, setIsNoMoreArticle] = useState(false);
-  let previousArticleLen = useRef(0);
-  let previousArticlePage = useRef(0);
   const isLoading = useSelector((state) =>
     state.getIn(['article', 'isLoading'])
   );
-  const isFetching = useSelector((state) =>
-    state.getIn(['article', 'isFetching'])
+  const hasFetching = useSelector((state) =>
+    state.getIn(['article', 'hasFetching'])
   );
-  useEffect(() => {
-    console.log(isLoading);
-    console.log('len', previousArticleLen.current, articles.size);
-    console.log('page', previousArticlePage.current, articlePage);
-    console.log(
-      '結果',
-      previousArticleLen.current === articles.size,
-      previousArticlePage !== articlePage
-    );
-    // if (isLoading) return;
+  let previousArticleLen = useRef(0);
 
+  useEffect(() => {
     if (
-      previousArticleLen.current === articles.size &&
-      previousArticlePage !== articlePage &&
-      isFetching &&
-      !isLoading
+      hasFetching &&
+      !isLoading &&
+      previousArticleLen.current === articles.size
     ) {
       setIsNoMoreArticle(true);
     } else {
       previousArticleLen.current = articles.size;
-      previousArticlePage.current = articlePage;
     }
-  }, [articles.size, articlePage, isLoading, isFetching]);
+  }, [articles.size, isLoading, hasFetching]);
+
   return (
     <section>
       <TransitionGroup component="ul" appear>
@@ -90,13 +79,14 @@ const Article = ({ articles, articlePage, handleClickMore }) => {
               </CSSTransition>
             );
           })}
-        {isNoMoreArticle ? (
-          <NoMoreTxt>已經到底部，沒有更多內容囉。</NoMoreTxt>
-        ) : (
-          <LoadMore onClick={() => handleClickMore(articlePage)}>
-            更多文章
-          </LoadMore>
-        )}
+        {articles.size > 0 &&
+          (isNoMoreArticle ? (
+            <NoMoreTxt>已經到底部，沒有更多內容囉。</NoMoreTxt>
+          ) : (
+            <LoadMore onClick={() => handleClickMore(articlePage)}>
+              更多文章
+            </LoadMore>
+          ))}
       </TransitionGroup>
     </section>
   );
