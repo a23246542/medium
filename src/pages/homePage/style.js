@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import imgUrl from '../../assets/topic/topic-issue.png';
 
 export const HomeWrapper = styled.div`
   overflow: hidden;
@@ -26,7 +27,7 @@ export const HomeRight = styled.div`
 export const TopicWrapper = styled.div`
   overflow: hidden;
   padding: 20px 0 10px;
-  margin-left: -18px;
+  /* margin-left: -18px; */
   border-bottom: 1px solid #dcdcdc;
 `;
 
@@ -34,7 +35,8 @@ export const TopicItem = styled.div`
   float: left;
   height: 32px;
   line-height: 32px;
-  margin-left: 18px;
+  /* margin-left: 18px; */
+  margin-right: 25px;
   margin-bottom: 18px;
   padding-right: 10px;
   background: #f7f7f7;
@@ -42,14 +44,30 @@ export const TopicItem = styled.div`
   color: #000;
   border: 1px solid #dcdcdc;
   border-radius: 4px;
+`;
 
-  .topicItem__pic {
-    display: block;
-    float: left;
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
-  }
+const getAllPicByContext = (requireContext) => {
+  let images = {};
+  requireContext.keys().forEach((imgUrl, index) => {
+    images[imgUrl.replace('./', '')] = requireContext(imgUrl)['default'];
+  });
+  return images;
+};
+const imageObj = getAllPicByContext(
+  // require.context('../../assets/topic', true, /^\.\/.*\.png$/)
+  require.context('../../assets/topic', true, /\.png$/)
+);
+
+export const TopicIcon = styled.div`
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
+  background-image: ${(props) =>
+    'url(' + imageObj['topic-' + props.icon + '.png'] + ')'};
+  background-repeat: no-repeat;
+  background-size: 60% 60%;
+  background-position: 50% 50%;
 `;
 
 export const ListItem = styled.li`
