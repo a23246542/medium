@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { actionCreators as loginActionCreators } from '../../pages/login/store';
+import { actions as loginActions } from '../../store/login';
 import { CSSTransition } from 'react-transition-group';
-// import * as actionCreators from './store/actionCreators';
-import { actionCreators } from './store';
 // import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   HeaderWrapper,
   Logo,
@@ -57,8 +55,9 @@ const Header = () => {
     state.getIn(['header', 'currentPage'])
   );
 
-  const login = useSelector((state) => state.getIn(['login', 'isLogin']));
+  const isLogin = useSelector((state) => state.getIn(['login', 'isLogin']));
 
+  const history = useHistory();
   // ==============================================
   const dispatch = useDispatch();
 
@@ -154,7 +153,15 @@ const Header = () => {
   };
 
   const logout = () => {
-    dispatch(loginActionCreators.logout());
+    dispatch(loginActions.logout());
+  };
+
+  const goToWritingPage = () => {
+    if (isLogin) {
+      history.push('/');
+    } else {
+      history.push('/login?url=writing');
+    }
   };
 
   return (
@@ -192,8 +199,10 @@ const Header = () => {
             </SearchWrapper>
           </Nav>
           <Addition>
-            <Button className="writing">寫文章</Button>
-            {login ? (
+            <Button className="writing" onClick={goToWritingPage}>
+              寫文章
+            </Button>
+            {isLogin ? (
               <Button className="reg" onClick={logout}>
                 退出
               </Button>

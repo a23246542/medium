@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const LoginWrapper = styled.div`
   width: 100%;
   height: calc(100% - 56px);
+  text-align: center;
   font-size: 14px;
   background-color: #f1f1f1;
 
@@ -17,7 +18,8 @@ export const LoginWrapper = styled.div`
 export const LoginBox = styled.div`
   display: inline-block;
   width: 400px;
-  margin: -30px auto 0; /* !! */
+  /* margin: -30px auto 0; //!! */
+  margin-top: -30px;
   padding: 50px 50px 30px;
   vertical-align: middle;
   background-color: #fff;

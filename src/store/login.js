@@ -6,7 +6,7 @@ const initialState = fromJS({
   username: localStorage.getItem('username') || '',
   password: '',
   isLoading: false,
-  login: localStorage.getItem('login') || false,
+  isLogin: localStorage.getItem('login') || false,
   error: '',
 });
 
@@ -26,16 +26,16 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.LOGIN:
       return state.set('isLoading', true);
     case actionTypes.LOGIN_SUCCESS:
-      return state.set('login', true);
+      return state.set('isLogin', true);
     case actionTypes.LOGIN_FAIL:
       return state.set('error', action.error);
     case actionTypes.LOGIN_REQUESTED:
       return state.set('isLoading', false);
     case actionTypes.LOGOUT:
-      return state.merger({
+      return state.merge({
         username: '',
         password: '',
-        login: false,
+        isLogin: false,
         isLoading: false,
       });
     case actionTypes.SET_USERNAME:

@@ -79,8 +79,8 @@ app.get('/writer', (req, res) => {
 
 app.post('/auth/signIn', (req, res) => {
   // console.log(req.body);
-  const { account, password } = req.body;
-  if (account === 'admin' && password === 'admin') {
+  const { username, password } = req.body;
+  if (username === 'admin' && password === 'admin') {
     res.json(signIn);
   } else {
     res.json({

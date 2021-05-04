@@ -5,5 +5,5 @@ module.exports = {
     message: '登入成功',
     token: 'xxefdf484dfr4nyjk45sxew84522',
     expired: '1600000',
-  }
-}
+  },
+};
