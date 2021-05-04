@@ -4,9 +4,7 @@ import Home from '../pages/home';
 import Login from '../pages/login';
 import Layout from '../common/layout';
 import HomePage from '../pages/homePage';
-import Detail from '../pages/detail';
-// import Detail from '../pages/detail';
-// import Detail from '../pages/detail';
+import Writing from '../pages/writing';
 
 const LazyDetailPage = lazy(() => import('../pages/detail'));
 
@@ -28,6 +26,7 @@ const RouterView = () => {
         {/* <Route path="/home" render={() => <Home />} /> */}
         <Route path="/home" render={(props) => LayoutRouter(props)} />
         <Route path="/login" render={() => <Login />} />
+        <Route path="/writing" render={() => <Writing />} />
         <Route path="/">
           <Redirect to="/home" />
         </Route>

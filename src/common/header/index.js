@@ -158,7 +158,7 @@ const Header = () => {
 
   const goToWritingPage = () => {
     if (isLogin) {
-      history.push('/');
+      history.push('/writing');
     } else {
       history.push('/login?url=writing');
     }

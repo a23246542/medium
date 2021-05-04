@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { LoginWrapper, LoginBox, Input, Button, ErrMsg } from './style';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionCreators } from './store';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import { actions as loginActions } from '../../store/login';
 
 const Login = () => {
@@ -16,6 +16,8 @@ const Login = () => {
   const password = useSelector((state) => state.getIn(['login', 'password']));
   const error = useSelector((state) => state.getIn(['login', 'error']));
   const isLogin = useSelector((state) => state.getIn(['login', 'isLogin']));
+  const { search } = useLocation();
+  const [redirectUrl, setRedirectUrl] = useState('');
 
   // const changeId = (e) => {
   //   setId(e.target.value);
@@ -26,9 +28,23 @@ const Login = () => {
   //   console.log(id);//還沒更新會拿到前一次的值
 
   // }
+
+  const getRedirectUrlBySearch = (search) => {
+    const query = new URLSearchParams(search);
+    const url = query.get('url') || '/';
+    console.log(url);
+    return url;
+  };
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    if (isLogin) {
+      setRedirectUrl(getRedirectUrlBySearch(search));
+    }
+  }, [isLogin, search]);
 
   // useEffect(() => {
   //   alert(error);
@@ -99,7 +115,7 @@ const Login = () => {
       </LoginWrapper>
     );
   } else {
-    return <Redirect to="/" />;
+    return <Redirect to={redirectUrl} />;
   }
 };
 
