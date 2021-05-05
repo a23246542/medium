@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         id: 8,
-        title: '議題賞析',
+        title: '議題論析',
         icon: 'issue',
       },
       {

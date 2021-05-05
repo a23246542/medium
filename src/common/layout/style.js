@@ -92,6 +92,7 @@ export const WriterItem = styled.li`
   .follow {
     display: block;
     float: right;
+    margin-top: 5px;
     font-size: 13px;
     color: #42c02e;
     cursor: pointer;

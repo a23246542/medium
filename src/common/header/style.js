@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 // import logoPic from '../../statics/logo.png';
 import logoPic from '../../assets/statics/logo.svg';
+import { Link } from 'react-router-dom';
 
 //padding-right70px可以推擠float
 // NavSearch如何擺放在中間
@@ -10,6 +11,10 @@ const border = 'border:1px solid #ccc';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const HeaderFixed = styled.header`
@@ -197,6 +202,7 @@ export const Button = styled.div`
   border: 1px solid #ec6149;
   font-size: 14px;
   cursor: pointer;
+  text-decoration: none;
   &.reg {
     width: 70px;
     color: #ec6149;

@@ -47,7 +47,7 @@ const Writer = ({ writerList }) => {
                 </span>
                 <h4 className="name">{author.get('name')}</h4>
                 <p>
-                  寫了{author.get('word')}k字。{author.get('list')}k喜歡
+                  寫了{author.get('word')}k字。{author.get('like')}k喜歡
                 </p>
               </WriterItem>
             );
