@@ -4,7 +4,6 @@ import { TopicWrapper, TopicItem, TopicIcon } from '../style';
 import { actionCreators } from '../store';
 
 const Topic = ({ topicList }) => {
-  console.count('topic render');
   return (
     <TopicWrapper>
       {topicList.size > 0 &&

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as loginActions } from '../../store/login';
 import { CSSTransition } from 'react-transition-group';
@@ -61,22 +61,22 @@ const Header = () => {
   // ==============================================
   const dispatch = useDispatch();
 
+  const loadHotSearchList = useCallback(async () => {
+    await dispatch(headerActions.loadHotSearchList());
+  }, [dispatch]);
+
   useEffect(() => {
     loadHotSearchList();
-  }, []);
+  }, [loadHotSearchList]);
 
-  const loadHotSearchList = async () => {
-    // await dispatch(hotSearchActions.loadHotSearchList());
-    await dispatch(headerActions.loadHotSearchList());
-  };
-  // @@為何這邊也要async await
   const handleInputFocus = async () => {
     // setFocused(true);
     // list.size === 0 && (await dispatch(actionCreators.getHotSearchList(list)));
     // setFocused(true);
-    headerActions.size === 0 &&
+    hotSearchList.size === 0 &&
       (await dispatch(headerActions.loadHotSearchList()));
     dispatch(headerActions.setSearchFocus());
+    console.log('4.test action dispatch完', hotSearchList);
   };
   const handleInputBlur = () => {
     dispatch(headerActions.setSearchBlur());
@@ -183,7 +183,12 @@ const Header = () => {
                 <NavSearch
                   className={focused ? 'focused' : ''}
                   onFocus={() => {
-                    handleInputFocus();
+                    handleInputFocus().then(() => {
+                      console.log(
+                        '5.handleInputFocus.then還是拿不到資料',
+                        hotSearchList
+                      );
+                    });
                   }}
                   onBlur={handleInputBlur}
                 ></NavSearch>

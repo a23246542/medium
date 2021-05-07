@@ -22,7 +22,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(articleAction.loadArticleList());
     dispatch(topicAction.loadTopics());
-  }, []);
+  }, [dispatch]);
 
   const handleClickMore = (articlePage) => {
     dispatch(articleAction.loadMoreArticle(articlePage));

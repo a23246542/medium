@@ -11,20 +11,19 @@ const Detail = () => {
   const id = query.get('id');
   const title = useSelector((state) => state.getIn(['detail', 'title']));
   const content = useSelector((state) => state.getIn(['detail', 'content']));
+  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'instant',
     });
+    const loadArticleDetail = async () => {
+      // dispatch(actionCreators.getDetail(id));
+      await dispatch(detailActions.loadArticleDetail(id));
+    };
     loadArticleDetail();
-  }, []);
-
-  const dispatch = useDispatch();
-  const loadArticleDetail = async () => {
-    // dispatch(actionCreators.getDetail(id));
-    await dispatch(detailActions.loadArticleDetail(id));
-  };
+  }, [id, dispatch]);
 
   return (
     <DetailWrapper>

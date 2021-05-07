@@ -62,6 +62,7 @@ export const actions = {
       await api
         .signIn({ username, password })
         .then((res) => {
+          // console.log(1);
           const result = res.data.data.success;
           if (result) {
             localStorage.setItem('username', username);
@@ -77,6 +78,7 @@ export const actions = {
         .finally(() => {
           dispatch(loginRequested());
         });
+      // console.log(2);
       // try {
       //   const res = await api.signIn({ username, password });
       //   const result = res.data.data.success;

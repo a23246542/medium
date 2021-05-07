@@ -24,7 +24,6 @@ const Writer = ({ writerList }) => {
   //   // await dispatch(actionCreators.getWriters());
   //   await dispatch(writerActions.loadWriters());
   // };
-  console.count('writer render');
   return (
     <WriterWrapper>
       <div className="title">推薦作者</div>

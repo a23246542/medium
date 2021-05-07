@@ -19,34 +19,30 @@ const Layout = ({ children }) => {
   const isShowBackTop = useSelector((state) =>
     state.getIn(['app', 'isShowBackTop'])
   );
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    const loadWriters = async () => {
+      await dispatch(writerActions.loadWriters());
+    };
     loadWriters().then(() => {
-      console.log('推薦作者加載完畢');
+      // console.log('推薦作者加載完畢');
     });
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
+    const changeScrollTopShow = () => {
+      if (document.documentElement.scrollTop > 500) {
+        dispatch(appActions.toggleTopShow(true));
+      } else {
+        dispatch(appActions.toggleTopShow(false));
+      }
+    };
     window.addEventListener('scroll', changeScrollTopShow);
     return () => {
       window.removeEventListener('scroll', changeScrollTopShow);
     };
-  }, []);
-
-  //mapDispatch
-  const dispatch = useDispatch();
-
-  const loadWriters = async () => {
-    await dispatch(writerActions.loadWriters());
-  };
-
-  const changeScrollTopShow = () => {
-    if (document.documentElement.scrollTop > 500) {
-      dispatch(appActions.toggleTopShow(true));
-    } else {
-      dispatch(appActions.toggleTopShow(false));
-    }
-  };
+  }, [dispatch]);
 
   const handleScrollTop = () => {
     // window.scrollTo(0,0);

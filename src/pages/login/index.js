@@ -56,23 +56,15 @@ const Login = () => {
   };
 
   const signIn = () => {
-    // if (username && password) {
-    // dispatch(actionCreators.signIn({ account, password }));
-    // dispatch(loginActions.login({ username, password }));
     dispatch(loginActions.login()).then(() => {
       // setTimeout(() => {
-      //   console.log('error', error);
+      //   console.log(error);
       //   error && alert(error);
       // }, 100);
+      // console.log(3);
     });
-    // } else {
-    // alert('帳號密碼不能為空');
-    // dispatch(loginActions.log);
-    // }
   };
-  // if (error) {
-  //   return alert(error);
-  // }
+
   if (!isLogin) {
     return (
       <LoginWrapper>

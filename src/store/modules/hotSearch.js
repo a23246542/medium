@@ -24,6 +24,10 @@ export const reducer = (state = initialState, action) => {
       //   hotSearchList: action.hotSearchList,
       //   totalPages: action.totalPages,
       // });
+      console.log(
+        '2.test reducer獲取 hotSearchList 去set',
+        action.hotSearchList
+      );
       return state.set('hotSearchList', action.hotSearchList);
     case actionTypes.FETCH_HOT_SEARCH_LIST_FAIL:
       return state.set('error', action.error);
