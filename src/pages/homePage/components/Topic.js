@@ -4,6 +4,7 @@ import { TopicWrapper, TopicItem, TopicIcon } from '../style';
 import { actionCreators } from '../store';
 
 const Topic = ({ topicList }) => {
+  console.count('topic render');
   return (
     <TopicWrapper>
       {topicList.size > 0 &&
@@ -20,4 +21,8 @@ const Topic = ({ topicList }) => {
   );
 };
 
-export default Topic;
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.topicList.size === nextProps.topicList.size ? true : false;
+};
+
+export default memo(Topic, areEqual);

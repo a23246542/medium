@@ -1,7 +1,5 @@
-import { combineReducers } from 'redux';
 import { fromJS } from 'immutable';
 import api from '../api';
-import { reducer as hotSearchReducer } from './modules/hotSearch';
 import { actions as hotSearchActions } from './modules/hotSearch';
 
 const initialState = fromJS({

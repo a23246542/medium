@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
-import Home from '../pages/home';
 import Login from '../pages/login';
 import Layout from '../common/layout';
 import HomePage from '../pages/homePage';

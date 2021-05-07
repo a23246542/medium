@@ -6,7 +6,6 @@ import boardImg3 from '../../../assets/recommend/recommend-publishing.png';
 import boardImg4 from '../../../assets/recommend/recommend-serialization.png';
 
 const Recommend = () => {
-  console.log('Recommend render');
   return (
     <RecommendWrapper>
       <RecommendItem imgUrl={boardImg1} />

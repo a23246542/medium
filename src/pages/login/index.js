@@ -19,20 +19,9 @@ const Login = () => {
   const { search } = useLocation();
   const [redirectUrl, setRedirectUrl] = useState('');
 
-  // const changeId = (e) => {
-  //   setId(e.target.value);
-  //   console.log(e.target.value);
-  //   console.log(inputRef.current.value);
-
-  //   // console.log(ref.id);
-  //   console.log(id);//還沒更新會拿到前一次的值
-
-  // }
-
   const getRedirectUrlBySearch = (search) => {
     const query = new URLSearchParams(search);
     const url = query.get('url') || '/';
-    console.log(url);
     return url;
   };
 
@@ -49,7 +38,7 @@ const Login = () => {
   // useEffect(() => {
   //   alert(error);
   // }, [error]);
-  console.count('login render');
+  // console.count('login render');
 
   const handleInputChange = (e) => {
     switch (e.target.name) {

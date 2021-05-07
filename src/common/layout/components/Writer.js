@@ -24,7 +24,7 @@ const Writer = ({ writerList }) => {
   //   // await dispatch(actionCreators.getWriters());
   //   await dispatch(writerActions.loadWriters());
   // };
-
+  console.count('writer render');
   return (
     <WriterWrapper>
       <div className="title">推薦作者</div>
@@ -57,4 +57,8 @@ const Writer = ({ writerList }) => {
   );
 };
 
-export default memo(Writer);
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.writerList.size === nextProps.writerList.size ? true : false;
+};
+
+export default memo(Writer, areEqual);

@@ -92,4 +92,4 @@ const Article = ({ articles, articlePage, handleClickMore }) => {
   );
 };
 
-export default memo(Article);
+export default Article;
