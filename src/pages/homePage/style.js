@@ -131,6 +131,7 @@ export const LoadMore = styled.div`
   border-radius: 20px;
   color: #fff;
   cursor: pointer;
+  background-color: #ec6149;
 `;
 
 export const NoMoreTxt = styled.p`

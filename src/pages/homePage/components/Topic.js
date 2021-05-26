@@ -21,7 +21,7 @@ const Topic = ({ topicList }) => {
 };
 
 const areEqual = (prevProps, nextProps) => {
-  return prevProps.topicList.size === nextProps.topicList.size ? true : false;
+  return prevProps.topicList.size === nextProps.topicList.size;
 };
 
 export default memo(Topic, areEqual);
