@@ -1,12 +1,12 @@
 import { fromJS } from 'immutable';
 import api from '../api';
-// import { logout } from '../pages/login/store/actionCreators';
+import utils from '../utils';
 
 const initialState = fromJS({
-  username: localStorage.getItem('username') || '',
+  username: utils.getUserName() || '',
   password: '',
   isLoading: false,
-  isLogin: localStorage.getItem('login') || false,
+  isLogin: utils.getUserName() ? true : false,
   error: '',
 });
 
@@ -18,9 +18,9 @@ const actionTypes = {
   LOGIN_REQUESTED: 'LOGIN/LOGIN_REQUESTED',
   SET_USERNAME: 'LOGIN/SET_USERNAME',
   SET_PASSWORD: 'LOGIN/SET_PASSWORD',
+  SET_ERRORMSG: 'LOGIN/SET_ERRORMSG',
 };
 
-//TODO reducer調到後面
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN:
@@ -42,6 +42,8 @@ export const reducer = (state = initialState, action) => {
       return state.set('username', action.username);
     case actionTypes.SET_PASSWORD:
       return state.set('password', action.password);
+    case actionTypes.SET_ERRORMSG:
+      return state.set('error', action.errMsg);
     default:
       return state;
   }
@@ -50,10 +52,8 @@ export const reducer = (state = initialState, action) => {
 export const actions = {
   login: () => {
     return async (dispatch, getState) => {
-      // console.log(getState().getIn(['login', 'username']));
       const username = getState().getIn(['login', 'username']);
       const password = getState().getIn(['login', 'password']);
-      // const { username, password } = getState().login;
       if (!(username?.length > 0 && password?.length > 0)) {
         dispatch(loginFail('帳號密碼不能為空'));
         return;
@@ -62,44 +62,26 @@ export const actions = {
       await api
         .signIn({ username, password })
         .then((res) => {
-          // console.log(1);
-          const result = res.data.data.success;
-          if (result) {
-            localStorage.setItem('username', username);
-            localStorage.setItem('login', true);
-            dispatch(loginSuccess());
-          } else {
-            dispatch(loginFail(res.data.data.message));
+          if (!res.data.data.success) {
+            utils.setUsername('');
+            return dispatch(loginFail(res.data.data.message));
           }
+          utils.setUsername(username);
+          dispatch(loginSuccess());
+          dispatch(setErrorMsg(''));
         })
         .catch((err) => {
+          utils.setUsername('');
           dispatch(loginFail(err));
         })
         .finally(() => {
           dispatch(loginRequested());
         });
-      // console.log(2);
-      // try {
-      //   const res = await api.signIn({ username, password });
-      //   const result = res.data.data.success;
-      //   if (result) {
-      //     localStorage.setItem('username', username);
-      //     localStorage.setItem('login', true);
-      //     await dispatch(loginSuccess());
-      //   } else {
-      //     await dispatch(loginFail(res.data.data.message));
-      //   }
-      // } catch (err) {
-      //   dispatch(loginFail(err));
-      // } finally {
-      //   dispatch(loginRequested());
-      // }
     };
   },
   logout: () => {
     return async (dispatch) => {
-      localStorage.removeItem('username');
-      localStorage.removeItem('login');
+      utils.setUsername('');
       dispatch(logout());
     };
   },
@@ -132,4 +114,9 @@ const loginRequested = () => ({
 
 const logout = () => ({
   type: actionTypes.LOGOUT,
+});
+
+const setErrorMsg = (errMsg) => ({
+  type: actionTypes.SET_ERRORMSG,
+  errMsg,
 });

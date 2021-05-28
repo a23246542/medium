@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as loginActions } from '../../store/login';
 import { CSSTransition } from 'react-transition-group';
-// import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import {
   HeaderWrapper,
@@ -26,32 +25,16 @@ import { actions as hotSearchActions } from '../../store/modules/hotSearch';
 import { actions as headerActions } from '../../store/header';
 
 const Header = () => {
-  // const [focused, setFocused] = useState(false);
-  // const [mouseIn, setMouseIn] = useState(false);
-  // const focused = useSelector((state) => state.header.focused);
-  // const focused = useSelector((state) => state.header.get('focused'));
   const focused = useSelector((state) => state.getIn(['header', 'focused']));
   const mouseIn = useSelector((state) => state.getIn(['header', 'mouseIn']));
 
-  // const list = useSelector((state) => state.getIn(['header', 'list']));
-  // const thisPage = useSelector((state) => state.getIn(['header', 'thisPage']));
-  // const totalPages = useSelector((state) =>
-  //   state.getIn(['header', 'totalPages'])
-  // );
-  // const list = useSelector((state) => state.getIn(['header', 'list']));
-  // const thisPage = useSelector((state) => state.getIn(['header', 'thisPage']));
-  // const totalPages = useSelector((state) =>
-  //   state.getIn(['header', 'totalPages'])
-  // );
   const hotSearchList = useSelector((state) =>
     state.getIn(['hotSearch', 'hotSearchList'])
   );
   const totalPages = useSelector((state) =>
-    // state.getIn(['hotSearch', 'totalPages'])
     state.getIn(['header', 'totalPages'])
   );
   const currentPage = useSelector((state) =>
-    // state.getIn(['hotSearch', 'currentPage'])
     state.getIn(['header', 'currentPage'])
   );
 
@@ -70,9 +53,6 @@ const Header = () => {
   }, [loadHotSearchList]);
 
   const handleInputFocus = async () => {
-    // setFocused(true);
-    // list.size === 0 && (await dispatch(actionCreators.getHotSearchList(list)));
-    // setFocused(true);
     hotSearchList.size === 0 &&
       (await dispatch(headerActions.loadHotSearchList()));
     dispatch(headerActions.setSearchFocus());
@@ -80,26 +60,17 @@ const Header = () => {
   };
   const handleInputBlur = () => {
     dispatch(headerActions.setSearchBlur());
-    // setFocused(false);
   };
 
   const handleMouseEnter = () => {
-    // dispatch(headerActions.mouseIn(true));
     dispatch(headerActions.setMouseEnter());
-    // dispatch(actionCreators.mouseEnter());
-    // setMouseIn(true);
   };
 
   const handleMouseLeave = () => {
-    // dispatch(headerActions.mouseIn(false));
     dispatch(headerActions.setMouseLeave());
-    // dispatch(actionCreators.mouseLeave());
-    // setMouseIn(false);
   };
 
   const handlePageChange = () => {
-    // %%放在getListArea後面好像會找不到
-    // if (thisPage!==totalPages){
     if (currentPage < totalPages) {
       dispatch(headerActions.setCurrentPage(currentPage + 1));
     } else {
@@ -108,21 +79,17 @@ const Header = () => {
   };
 
   const getListArea = () => {
-    //渲染狀態focused mouseIn list
-    //eslint-disabled-next-line
-    // if ('aa') return; // eslint-disable-line
-    const JsList = hotSearchList.toJS(); // %%不可更改 list.toJs is not a function
+    const JsList = hotSearchList.toJS();
     const pageList = [];
 
     if (JsList.length) {
       for (let i = (currentPage - 1) * 10; i < currentPage * 10; i++) {
         // 第一頁0~小於10 第二頁10~小於20
         pageList.push(
-          <SearchInfoItem key={JsList[i]}>{JsList[i]}</SearchInfoItem> //JsList才能[i]
+          <SearchInfoItem key={JsList[i]}>{JsList[i]}</SearchInfoItem>
         );
       }
     }
-    // console.log(mouseIn);//!!一開始進來渲染一次 接著fouced改變渲染一次 等list資料回來又渲染一次
 
     if (focused || mouseIn) {
       return (
@@ -136,15 +103,7 @@ const Header = () => {
               換一換
             </SearchInfoSwitch>
           </SearchInfoTitle>
-          <SearchInfoList>
-            {pageList}
-            {/* {list.map(item => (
-              <SearchInfoItem key={item}>{item}</SearchInfoItem>
-            ))} */}
-            {/* <SearchInfoItem>教育</SearchInfoItem>
-            <SearchInfoItem>簡書</SearchInfoItem>
-            <SearchInfoItem>投稿</SearchInfoItem> */}
-          </SearchInfoList>
+          <SearchInfoList>{pageList}</SearchInfoList>
         </SearchInfo>
       );
     } else {
