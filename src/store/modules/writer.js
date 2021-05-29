@@ -29,15 +29,6 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-// export const loadWriters = () => {
-//   return async (dispatch) => {
-//     await api.getWriterList().then((res) => {
-//       const result = res.data.data.writerList;
-//       dispatch(fetchWriterList(result));
-//     });
-//   };
-// };
-
 const fetchWriterList = () => ({
   type: actionTypes.FETCH_WRITER_LIST,
 });

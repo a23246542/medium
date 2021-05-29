@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { actionCreators } from './store';
 import { DetailWrapper, Header, Content } from './style';
 import { useRouteMatch, useLocation, withRouter } from 'react-router-dom';
 import { actions as detailActions } from '../../store/detail';
@@ -19,7 +18,6 @@ const Detail = () => {
       behavior: 'instant',
     });
     const loadArticleDetail = async () => {
-      // dispatch(actionCreators.getDetail(id));
       await dispatch(detailActions.loadArticleDetail(id));
     };
     loadArticleDetail();
@@ -38,4 +36,3 @@ const Detail = () => {
 };
 
 export default withRouter(Detail);
-// export default Detail;

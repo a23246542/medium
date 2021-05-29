@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-// import webConstructionImg from '../../assets/writing/web-construction.png';
 import {
   WebConstruction,
   WebConstructionImgWrap,

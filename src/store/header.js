@@ -18,7 +18,6 @@ const actionTypes = {
   SET_SEARCH_BLUR: 'HEADER/SET_SEARCH_BLUR',
 };
 
-// const headerReducer = (state = initialState, action) => {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_CURRENT_PAGE:
@@ -38,37 +37,6 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// export const reducer = combineReducers({
-//   hotSearch: hotSearchReducer,
-//   // header: headerReducer,
-// });
-
-const setCurrentPage = (currentPage) => ({
-  type: actionTypes.SET_CURRENT_PAGE,
-  currentPage,
-});
-
-const setTotalPages = (totalPages) => ({
-  type: actionTypes.SET_TOTAL_PAGES,
-  totalPages,
-});
-
-// const setSearchFocus = () => ({
-//   type: actionTypes.SET_SEARCH_FOCUS,
-// });
-
-// const setSearchBlur = () => ({
-//   type: actionTypes.SET_SEARCH_BLUR,
-// });
-
-// const setMouseEnter = () => ({
-//   type: actionTypes.SET_MOUSE_ENTER,
-// });
-
-// const setMouseLeave = () => ({
-//   type: actionTypes.SET_MOUSE_LEAVE,
-// });
 
 export const actions = {
   loadHotSearchList: () => {
@@ -109,3 +77,8 @@ export const actions = {
     type: actionTypes.SET_MOUSE_LEAVE,
   }),
 };
+
+const setTotalPages = (totalPages) => ({
+  type: actionTypes.SET_TOTAL_PAGES,
+  totalPages,
+});

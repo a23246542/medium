@@ -8,7 +8,6 @@ import { actions as appActions } from '../../store/app';
 import { Wrapper, Main, Aside } from './style';
 
 const Layout = ({ children }) => {
-  //mapState
   const writerList = useSelector((state) =>
     state.getIn(['writer', 'writerList'])
   );
@@ -45,10 +44,9 @@ const Layout = ({ children }) => {
   }, [dispatch]);
 
   const handleScrollTop = () => {
-    // window.scrollTo(0,0);
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', //@@
+      behavior: 'smooth',
     });
   };
 

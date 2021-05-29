@@ -1,8 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useRef, useEffect } from 'react';
 import { LoginWrapper, LoginBox, Input, Button, ErrMsg } from './style';
 import { useSelector, useDispatch } from 'react-redux';
-import { actionCreators } from './store';
 import { Redirect, useLocation } from 'react-router-dom';
 import { actions as loginActions } from '../../store/login';
 

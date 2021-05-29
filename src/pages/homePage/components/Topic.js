@@ -1,7 +1,5 @@
-import React, { useEffect, useState, memo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { memo } from 'react';
 import { TopicWrapper, TopicItem, TopicIcon } from '../style';
-import { actionCreators } from '../store';
 
 const Topic = ({ topicList }) => {
   return (

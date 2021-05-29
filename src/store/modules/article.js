@@ -1,4 +1,4 @@
-import { fromJS, update } from 'immutable';
+import { fromJS } from 'immutable';
 import api from '../../api';
 
 const initialState = fromJS({
@@ -24,7 +24,6 @@ export const reducer = (state = initialState, action) => {
       return state.set('isLoading', true);
     case actionTypes.FETCH_ARTICLE_LIST_SUCCESS:
       return state.set('articleList', action.articleList);
-    // .set('isFetching', true);
     case actionTypes.FETCH_ARTICLE_LIST_FAIL:
       return state.set('articleList', action.error);
     case actionTypes.FETCH_ARTICLE_LIST_REQUESTED:

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as loginActions } from '../../store/login';
 import { CSSTransition } from 'react-transition-group';
@@ -21,7 +21,6 @@ import {
   Addition,
   Button,
 } from './style';
-import { actions as hotSearchActions } from '../../store/modules/hotSearch';
 import { actions as headerActions } from '../../store/header';
 
 const Header = () => {
@@ -49,7 +48,7 @@ const Header = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    loadHotSearchList();
+    // loadHotSearchList();
   }, [loadHotSearchList]);
 
   const handleInputFocus = async () => {
@@ -137,7 +136,6 @@ const Header = () => {
               <i className="iconfont">&#xe636;</i>
             </NavItem>
             <SearchWrapper>
-              {/* @@CSSTransition只能包一个如何影响到zoom */}
               <CSSTransition in={focused} timeout={200} classNames="slide">
                 <NavSearch
                   className={focused ? 'focused' : ''}
@@ -152,8 +150,6 @@ const Header = () => {
                   onBlur={handleInputBlur}
                 ></NavSearch>
               </CSSTransition>
-              {/* <i className="iconfont"
-                className={focused ? 'focused' :''} */}
               <i
                 className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}
               >
@@ -175,7 +171,6 @@ const Header = () => {
                 <Button className="reg">登入</Button>
               </Link>
             )}
-            {/* <Button className='reg'>登陸</Button> */}
           </Addition>
         </HeaderContainer>
       </HeaderFixed>
@@ -183,9 +178,5 @@ const Header = () => {
     </HeaderWrapper>
   );
 };
-
-// Header.propTypes = {
-
-// };
 
 export default Header;

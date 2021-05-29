@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   width: 1000px;
   margin: 0 auto;
   padding-top: 30px;
-  /* overflow: hidden; */
   &::after {
     content: '';
     display: block;
@@ -17,7 +16,6 @@ export const Wrapper = styled.div`
 
 export const Main = styled.main`
   float: left;
-  /* padding-top: 30px; */
   width: 700px;
 
   .banner-img {
