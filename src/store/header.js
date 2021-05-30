@@ -25,7 +25,6 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.SET_TOTAL_PAGES:
       return state.set('totalPages', action.totalPages);
     case actionTypes.SET_SEARCH_FOCUS:
-      console.log('3.test reducer設定focused');
       return state.set('focused', true);
     case actionTypes.SET_SEARCH_BLUR:
       return state.set('focused', false);
@@ -47,10 +46,8 @@ export const actions = {
         .then((res) => {
           const hotSearchAry = res.data.data;
           const totalPages = Math.ceil(hotSearchAry.length / 10);
-          console.log('1.test api後派發同步action');
           dispatch(hotSearchActions.fetchHotSearchListSuccess(hotSearchAry));
           dispatch(setTotalPages(totalPages));
-          console.log('test', getState().getIn(['hotSearch', 'hotSearchList']));
         })
         .catch((err) => {
           dispatch(hotSearchActions.fetchHotSearchListFail(err));

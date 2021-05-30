@@ -2,11 +2,10 @@ import React, { useEffect } from 'react';
 import Article from './components/Article';
 import Topic from './components/Topic';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as articleAction } from '../../store/modules/article';
-import { actions as topicAction } from '../../store/modules/topic';
+import { actions as homeActions } from '../../store/home';
 import banner from '../../assets/statics/banner.jpg';
 
-const HomePage = () => {
+const Home = () => {
   const articles = useSelector((state) =>
     state.getIn(['article', 'articleList'])
   );
@@ -19,12 +18,12 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(articleAction.loadArticleList());
-    dispatch(topicAction.loadTopics());
+    dispatch(homeActions.loadArticleList());
+    dispatch(homeActions.loadTopics());
   }, [dispatch]);
 
   const handleClickMore = (articlePage) => {
-    dispatch(articleAction.loadMoreArticle(articlePage));
+    dispatch(homeActions.loadMoreArticle(articlePage));
   };
 
   return (
@@ -40,4 +39,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

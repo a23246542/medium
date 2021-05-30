@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import api from '../../api';
 
 const initialState = fromJS({
   topicList: [],
@@ -29,40 +28,19 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const fetchTopicList = (topicAry) => ({
-  type: actionTypes.FETCH_TOPIC_LIST,
-});
-
-const fetchTopicListSuccess = (topicAry) => ({
-  type: actionTypes.FETCH_TOPIC_LIST_SUCCESS,
-  topicList: fromJS(topicAry),
-});
-
-const fetchTopicListFailed = (error) => ({
-  type: actionTypes.FETCH_TOPIC_LIST_FAIL,
-  error,
-});
-
-const fetchTopicListRequested = () => ({
-  type: actionTypes.FETCH_TOPIC_LIST_REQUESTED,
-});
-
 export const actions = {
-  loadTopics: () => {
-    return async (dispatch) => {
-      dispatch(fetchTopicList());
-      await api
-        .getTopicList()
-        .then((res) => {
-          const result = res.data.data.topicList;
-          dispatch(fetchTopicListSuccess(result));
-        })
-        .catch((err) => {
-          dispatch(fetchTopicListFailed(err));
-        })
-        .finally(() => {
-          dispatch(fetchTopicListRequested());
-        });
-    };
-  },
+  fetchTopicList: () => ({
+    type: actionTypes.FETCH_TOPIC_LIST,
+  }),
+  fetchTopicListSuccess: (topicAry) => ({
+    type: actionTypes.FETCH_TOPIC_LIST_SUCCESS,
+    topicList: fromJS(topicAry),
+  }),
+  fetchTopicListFailed: (error) => ({
+    type: actionTypes.FETCH_TOPIC_LIST_FAIL,
+    error,
+  }),
+  fetchTopicListRequested: () => ({
+    type: actionTypes.FETCH_TOPIC_LIST_REQUESTED,
+  }),
 };

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Recommend from './components/Recommend';
 import Writer from './components/Writer';
 import BackTop from './components/backTop';
-import { actions as writerActions } from '../../store/modules/writer';
+import { actions as layoutActions } from '../../store/layout';
 import { actions as appActions } from '../../store/app';
 import { Wrapper, Main, Aside } from './style';
 
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     const loadWriters = async () => {
-      await dispatch(writerActions.loadWriters());
+      await dispatch(layoutActions.loadWriters());
     };
     loadWriters().then(() => {
       // console.log('推薦作者加載完畢');

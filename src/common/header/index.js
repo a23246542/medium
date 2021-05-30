@@ -43,19 +43,18 @@ const Header = () => {
   // ==============================================
   const dispatch = useDispatch();
 
-  const loadHotSearchList = useCallback(async () => {
-    await dispatch(headerActions.loadHotSearchList());
+  const loadHotSearchList = useCallback(() => {
+    dispatch(headerActions.loadHotSearchList());
   }, [dispatch]);
 
   useEffect(() => {
-    // loadHotSearchList();
+    loadHotSearchList();
   }, [loadHotSearchList]);
 
   const handleInputFocus = async () => {
     hotSearchList.size === 0 &&
       (await dispatch(headerActions.loadHotSearchList()));
     dispatch(headerActions.setSearchFocus());
-    console.log('4.test action dispatch完', hotSearchList);
   };
   const handleInputBlur = () => {
     dispatch(headerActions.setSearchBlur());
@@ -139,14 +138,7 @@ const Header = () => {
               <CSSTransition in={focused} timeout={200} classNames="slide">
                 <NavSearch
                   className={focused ? 'focused' : ''}
-                  onFocus={() => {
-                    handleInputFocus().then(() => {
-                      console.log(
-                        '5.handleInputFocus.then還是拿不到資料',
-                        hotSearchList
-                      );
-                    });
-                  }}
+                  onFocus={handleInputFocus}
                   onBlur={handleInputBlur}
                 ></NavSearch>
               </CSSTransition>

@@ -7,10 +7,9 @@ let api = axios.create({
 
 api.defaults.timeout = 10500;
 
-export default {
+const apis = {
   getHotSearchList() {
-    // return api.get('/api/headerList.json');
-    return api.get('/headerList'); //@@直接連代理都不用 後端開啟跨域
+    return api.get('/headerList');
   },
   getTopicList() {
     return api.get('/topic');
@@ -25,7 +24,8 @@ export default {
     return api.get('/writer');
   },
   signIn(data) {
-    // console.log(data);
     return api.post('/auth/signIn', data);
   },
 };
+
+export default apis;

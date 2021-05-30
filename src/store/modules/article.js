@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import api from '../../api';
 
 const initialState = fromJS({
   articleList: [],
@@ -44,65 +43,27 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const fetchArticleList = () => ({
-  type: actionTypes.FETCH_ARTICLE_LIST,
-});
-
-const fetchArticleListSuccess = (articleAry) => ({
-  type: actionTypes.FETCH_ARTICLE_LIST_SUCCESS,
-  articleList: fromJS(articleAry),
-});
-
-const fetchArticleListFail = (error) => ({
-  type: actionTypes.FETCH_ARTICLE_LIST_FAIL,
-  error,
-});
-
-const fetchArticleListRequested = () => ({
-  type: actionTypes.FETCH_ARTICLE_LIST_REQUESTED,
-});
-
-const updateArticlePage = (nextPage) => ({
-  type: actionTypes.SET_ARTICLE_PAGE,
-  nextPage,
-});
-
-const addArticleList = (data) => ({
-  type: actionTypes.ADD_ARTICLE_LIST,
-  moreArticle: fromJS(data),
-});
-
-//可以shorthand
-// 只把非同步action導出去。而不直接碰資料
 export const actions = {
-  // updateArticlePage: (nextPage) => ({
-  //   type: actionTypes.FETCH_ARTICLE_PAGE,
-  //   nextPage,
-  // }),
-  loadArticleList: () => {
-    return async (dispatch) => {
-      dispatch(fetchArticleList());
-      await api
-        .getArticleList()
-        .then((res) => {
-          const result = res.data.data.articleList;
-          dispatch(fetchArticleListSuccess(result));
-        })
-        .catch((err) => {
-          dispatch(fetchArticleListFail(err));
-        })
-        .finally(() => {
-          dispatch(fetchArticleListRequested());
-        });
-    };
-  },
-  loadMoreArticle: (page) => {
-    return async (dispatch) => {
-      dispatch(updateArticlePage(page + 1));
-      await api.getArticleList(page + 1).then((res) => {
-        const result = res.data.data.articleList;
-        dispatch(addArticleList(result));
-      });
-    };
-  },
+  fetchArticleList: () => ({
+    type: actionTypes.FETCH_ARTICLE_LIST,
+  }),
+  fetchArticleListSuccess: (articleAry) => ({
+    type: actionTypes.FETCH_ARTICLE_LIST_SUCCESS,
+    articleList: fromJS(articleAry),
+  }),
+  fetchArticleListFail: (error) => ({
+    type: actionTypes.FETCH_ARTICLE_LIST_FAIL,
+    error,
+  }),
+  fetchArticleListRequested: () => ({
+    type: actionTypes.FETCH_ARTICLE_LIST_REQUESTED,
+  }),
+  updateArticlePage: (nextPage) => ({
+    type: actionTypes.SET_ARTICLE_PAGE,
+    nextPage,
+  }),
+  addArticleList: (data) => ({
+    type: actionTypes.ADD_ARTICLE_LIST,
+    moreArticle: fromJS(data),
+  }),
 };

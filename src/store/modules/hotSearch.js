@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import api from '../../api';
 
 const initialState = fromJS({
   hotSearchList: [],
@@ -20,10 +19,6 @@ export const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_HOT_SEARCH_LIST:
       return state.set('isLoading', true);
     case actionTypes.FETCH_HOT_SEARCH_LIST_SUCCESS:
-      console.log(
-        '2.test reducer獲取 hotSearchList 去set',
-        action.hotSearchList
-      );
       return state.set('hotSearchList', action.hotSearchList);
     case actionTypes.FETCH_HOT_SEARCH_LIST_FAIL:
       return state.set('error', action.error);

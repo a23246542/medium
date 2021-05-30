@@ -29,40 +29,19 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const fetchWriterList = () => ({
-  type: actionTypes.FETCH_WRITER_LIST,
-});
-
-const fetchWriterListSuccess = (writerAry) => ({
-  type: actionTypes.FETCH_WRITER_LIST_SUCCESS,
-  writerList: fromJS(writerAry),
-});
-
-const fetchWriterListFail = (error) => ({
-  type: actionTypes.FETCH_WRITER_LIST_FAIL,
-  error,
-});
-
-const fetchWriterListRequested = () => ({
-  type: actionTypes.FETCH_WRITER_LIST_REQUESTED,
-});
-
 export const actions = {
-  loadWriters: () => {
-    return async (dispatch) => {
-      dispatch(fetchWriterList());
-      await api
-        .getWriterList()
-        .then((res) => {
-          const result = res.data.data.writerList;
-          dispatch(fetchWriterListSuccess(result));
-        })
-        .catch((err) => {
-          dispatch(fetchWriterListFail(err));
-        })
-        .finally(() => {
-          dispatch(fetchWriterListRequested());
-        });
-    };
-  },
+  fetchWriterList: () => ({
+    type: actionTypes.FETCH_WRITER_LIST,
+  }),
+  fetchWriterListSuccess: (writerAry) => ({
+    type: actionTypes.FETCH_WRITER_LIST_SUCCESS,
+    writerList: fromJS(writerAry),
+  }),
+  fetchWriterListFail: (error) => ({
+    type: actionTypes.FETCH_WRITER_LIST_FAIL,
+    error,
+  }),
+  fetchWriterListRequested: () => ({
+    type: actionTypes.FETCH_WRITER_LIST_REQUESTED,
+  }),
 };

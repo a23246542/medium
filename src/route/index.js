@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from '../pages/login';
 import Layout from '../common/layout';
-import HomePage from '../pages/homePage';
+import HomePage from '../pages/home';
 import Writing from '../pages/writing';
 
 const LazyDetailPage = lazy(() => import('../pages/detail'));
