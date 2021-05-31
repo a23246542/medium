@@ -4,7 +4,7 @@ const textLight = '#969696';
 const aColor = '#333';
 
 export const Wrapper = styled.div`
-  width: 1000px;
+  width: 1020px;
   margin: 0 auto;
   padding-top: 30px;
   &::after {
@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
 export const Main = styled.main`
   float: left;
   width: 700px;
+  padding-left: 15px;
 
   .banner-img {
     width: 100%;
@@ -24,7 +25,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Aside = styled.div`
+export const Aside = styled.aside`
   position: sticky;
   top: 56px;
   width: calc(100% - 700px);
@@ -51,7 +52,6 @@ export const RecommendItem = styled.div`
 export const WriterWrapper = styled.div`
   width: 100%;
   min-height: 300px;
-  /* border: 1px solid #dcdcdc; */
   border-radius: 3px;
   text-align: center;
 
@@ -119,9 +119,9 @@ export const BackTop = styled.div`
   position: fixed;
   bottom: 60px;
   right: 50%;
-  transform: translate(500px);
+  transform: translate(440px);
   z-index: 100;
-  width: 70px;
+  width: 80px;
   height: 50px;
   line-height: 50px;
   text-align: center;

@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const Mock = require('mockjs');
-// const proxy = require('http-proxy-middleware')
 const app = express();
 const headersList = require('./src/api/data/headerList');
 const home = require('./src/api/data/home');
@@ -69,7 +68,6 @@ app.get('/details', (req, res) => {
   }, 500);
 });
 
-// app.get('/writer',(res) => {// !!!一定要兩個參數
 app.get('/writer', (req, res) => {
   setTimeout(function () {
     res.json(writer);
@@ -77,7 +75,6 @@ app.get('/writer', (req, res) => {
 });
 
 app.post('/auth/signIn', (req, res) => {
-  // console.log(req.body);
   const { username, password } = req.body;
   if (username === 'admin' && password === 'admin') {
     res.json(signIn);
@@ -93,5 +90,5 @@ app.post('/auth/signIn', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('監聽端口');
+  // console.log('監聽端口');
 });

@@ -1,11 +1,6 @@
 import styled from 'styled-components/macro';
-// import logoPic from '../../statics/logo.png';
 import logoPic from '../../assets/statics/logo.svg';
 import { Link } from 'react-router-dom';
-
-//padding-right70px可以推擠float
-// NavSearch如何擺放在中間
-// transition重包
 
 const border = 'border:1px solid #ccc';
 
@@ -30,8 +25,10 @@ export const HeaderFixed = styled.header`
 
 export const HeaderContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   min-width: 1000px;
   max-width: 1440px;
+  padding: 0 30px;
   height: 56px;
   margin: 0 auto;
 `;
@@ -41,9 +38,6 @@ export const HeaderHigh = styled.div`
   height: 56px;
 `;
 
-// export const Logo = styled.a.attrs({
-//   href:'/'
-// })`
 export const Logo = styled.img.attrs((props) => ({
   src: props.src || `${logoPic}`,
 }))`
@@ -58,14 +52,14 @@ export const Nav = styled.div`
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  /* ${border}; */
 `;
 
-export const NavItem = styled.div`
+export const NavItem = styled(Link)`
   line-height: 56px;
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  text-decoration: none;
 
   &.left {
     float: left;
@@ -81,8 +75,6 @@ export const NavItem = styled.div`
   }
 `;
 
-// @@js zoom没有block依然能宽高
-// !!css 包外面靠父曾做法
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
@@ -191,10 +183,7 @@ export const Addition = styled.div`
 `;
 
 export const Button = styled.div`
-  /* float: right; !!css 不一定要flex 不加换div占满宽 */
-  /* margin-top: 9px; */
   margin-right: 20px;
-  /* padding: 0 20px; */
   height: 38px;
   line-height: 38px;
   text-align: center;
@@ -206,6 +195,7 @@ export const Button = styled.div`
   &.reg {
     width: 70px;
     color: #ec6149;
+    background-color: #fff;
   }
   &.writing {
     width: 84px;

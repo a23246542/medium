@@ -129,9 +129,13 @@ const Header = () => {
             <Logo />
           </Link>
           <Nav>
-            <NavItem className="left">首頁</NavItem>
-            <NavItem className="left">下載APP</NavItem>
-            <NavItem className="right">
+            <NavItem to="/" className="left">
+              首頁
+            </NavItem>
+            <NavItem to="/" className="left">
+              下載APP
+            </NavItem>
+            <NavItem className="right" to="/">
               <i className="iconfont">&#xe636;</i>
             </NavItem>
             <SearchWrapper>
@@ -159,9 +163,9 @@ const Header = () => {
                 退出
               </Button>
             ) : (
-              <Link to="/login">
-                <Button className="reg">登入</Button>
-              </Link>
+              <Button to="/login" className="reg">
+                登入
+              </Button>
             )}
           </Addition>
         </HeaderContainer>

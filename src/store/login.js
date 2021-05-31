@@ -55,7 +55,7 @@ export const actions = {
       const username = getState().getIn(['login', 'username']);
       const password = getState().getIn(['login', 'password']);
       if (!(username?.length > 0 && password?.length > 0)) {
-        dispatch(loginFail('帳號密碼不能為空'));
+        dispatch(loginFail('帳號或密碼不能為空'));
         return;
       }
       dispatch(login());

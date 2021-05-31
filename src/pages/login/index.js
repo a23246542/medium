@@ -69,7 +69,7 @@ const Login = () => {
             onChange={handleInputChange}
           />
         </Input>
-        <Button onClick={signIn}>登陸</Button>
+        <Button onClick={signIn}>登入</Button>
       </LoginBox>
     </LoginWrapper>
   );

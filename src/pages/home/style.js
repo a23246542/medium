@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro';
-import imgUrl from '../../assets/topic/topic-issue.png';
-
+import { Link } from 'react-router-dom';
 export const HomeWrapper = styled.div`
   overflow: hidden;
   margin: 0 auto;
@@ -35,7 +34,6 @@ export const TopicItem = styled.div`
   float: left;
   height: 32px;
   line-height: 32px;
-  /* margin-left: 18px; */
   margin-right: 25px;
   margin-bottom: 18px;
   padding-right: 10px;
@@ -99,16 +97,20 @@ export const ListItem = styled.li`
   }
 `;
 
+export const TitleLink = styled(Link)``;
+
 export const ListInfo = styled.div`
   width: 500px;
   float: left;
 
-  .title {
+  ${TitleLink} {
+    margin-bottom: 4px;
     font-size: 18px;
     line-height: 1.5;
     font-weight: bold;
     color: #333;
     text-decoration: none;
+    cursor: pointer;
     &:hover {
       text-decoration: underline;
     }

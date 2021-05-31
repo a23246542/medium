@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { ListItem, ListInfo, LoadMore, NoMoreTxt } from '../style';
+import { ListItem, ListInfo, TitleLink, LoadMore, NoMoreTxt } from '../style';
 import { Link } from 'react-router-dom';
 import '../style';
 
@@ -51,12 +51,9 @@ const Article = ({ articles, articlePage, handleClickMore }) => {
                 >
                   <img className="pic" src={item.get('imgUrl')} alt="" />
                   <ListInfo>
-                    <Link
-                      to={`/home/detail?id=${item.get('id')}`}
-                      className="title"
-                    >
-                      <h3>{item.get('title')}</h3>
-                    </Link>
+                    <TitleLink to={`/home/detail?id=${item.get('id')}`}>
+                      {item.get('title')}
+                    </TitleLink>
                     <p className="desc">{item.get('desc')}</p>
                   </ListInfo>
                 </ListItem>

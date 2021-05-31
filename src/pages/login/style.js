@@ -18,9 +18,8 @@ export const LoginWrapper = styled.div`
 export const LoginBox = styled.div`
   display: inline-block;
   width: 400px;
-  /* margin: -30px auto 0; //!! */
   margin-top: -30px;
-  padding: 50px 50px 30px;
+  padding: 25px 50px 30px;
   vertical-align: middle;
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -30,25 +29,28 @@ export const LoginBox = styled.div`
 export const Input = styled.div`
   position: relative;
   padding: 10px 20px 10px 50px;
-
-  /* border-radius: 4px; */
   border: 1px solid #c8c8c8;
   background: #f7f7f7;
+
+  &:first-of-type {
+    margin-bottom: 20px;
+  }
 
   > i {
     position: absolute;
     top: 50%;
-    left: 20px; /* !!!沒有left會被padding推到 */
+    left: 20px;
     font-size: 20px;
     transform: translateY(-50%);
   }
 
   > input {
-    width: 100%; /* !!!不會破版 */
+    width: 100%;
     height: 30px;
     border: none;
     font-size: 20px;
     background: none;
+    box-shadow: 0 0 0 30px #f7f7f7 inset;
 
     &:focus {
       outline: none;
@@ -74,8 +76,9 @@ export const Button = styled.button`
   }
 `;
 
-export const ErrMsg = styled.div`
-  margin-bottom: 10px;
+export const ErrMsg = styled.span`
+  display: inline-block;
+  height: 30px;
   color: red;
   letter-spacing: 1px;
 `;
