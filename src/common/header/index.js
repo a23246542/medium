@@ -113,6 +113,10 @@ const Header = () => {
     dispatch(loginActions.logout());
   };
 
+  const login = () => {
+    history.push('/login');
+  };
+
   const goToWritingPage = () => {
     if (isLogin) {
       history.push('/writing');
@@ -163,7 +167,7 @@ const Header = () => {
                 退出
               </Button>
             ) : (
-              <Button to="/login" className="reg">
+              <Button className="reg" onClick={login}>
                 登入
               </Button>
             )}
