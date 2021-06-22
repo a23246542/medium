@@ -13,7 +13,7 @@ const signIn = require('./src/api/data/signIn');
 const port = process.env.PORT || 5000;
 const root = __dirname + '/build';
 
-app.use(express.static(root, { maxAge: 8640000 }));
+app.use(express.static(root, { maxAge: 86400000 }));
 app.get(['/home', '/detail', '/home/detail'], (req, res) => {
   res.sendFile(path.resolve(root, 'index.html'));
 });
@@ -91,6 +91,8 @@ app.post('/auth/signIn', (req, res) => {
 
 // const host = '0.0.0.0';
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log('監聽端口', process.env.PORT);
-});
+setTimeout(() => {
+  app.listen(process.env.PORT, () => {
+    console.log('監聽端口', process.env.PORT);
+  });
+}, 0);
