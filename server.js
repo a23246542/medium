@@ -89,10 +89,6 @@ app.post('/auth/signIn', (req, res) => {
   }
 });
 
-// const host = '0.0.0.0';
-
-setTimeout(() => {
-  app.listen(process.env.PORT, () => {
-    console.log('監聽端口', process.env.PORT);
-  });
-}, 0);
+app.listen(port, () => {
+  console.log('監聽端口', port);
+});
